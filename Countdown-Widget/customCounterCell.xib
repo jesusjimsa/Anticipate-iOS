@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="257" id="fD3-Ns-7bh" customClass="customCounterCell" customModule="Countdown_Widget" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="539" height="257"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fD3-Ns-7bh" id="HRH-xk-hmd">
+                <rect key="frame" x="0.0" y="0.0" width="539" height="257"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NNN-d2-gEg">
+                        <rect key="frame" x="20" y="15" width="253.5" height="227"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="NNN-d2-gEg" secondAttribute="height" multiplier="48:43" id="6iB-rT-bjU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrQ-3a-h44">
+                        <rect key="frame" x="313.5" y="41" width="89.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwg-g7-ktJ">
+                        <rect key="frame" x="313.5" y="112" width="102" height="33"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="cwg-g7-ktJ" firstAttribute="centerY" secondItem="HRH-xk-hmd" secondAttribute="centerY" id="5iI-ZK-8Ty"/>
+                    <constraint firstAttribute="bottom" secondItem="NNN-d2-gEg" secondAttribute="bottom" constant="15" id="AxF-bX-lPo"/>
+                    <constraint firstItem="MrQ-3a-h44" firstAttribute="top" secondItem="HRH-xk-hmd" secondAttribute="topMargin" constant="30" id="E5Z-EU-8l6"/>
+                    <constraint firstItem="MrQ-3a-h44" firstAttribute="leading" secondItem="NNN-d2-gEg" secondAttribute="trailing" constant="40" id="Ggi-V0-Lai"/>
+                    <constraint firstItem="cwg-g7-ktJ" firstAttribute="leading" secondItem="NNN-d2-gEg" secondAttribute="trailing" constant="40" id="Hk2-4V-bkP"/>
+                    <constraint firstItem="NNN-d2-gEg" firstAttribute="top" secondItem="HRH-xk-hmd" secondAttribute="top" constant="15" id="h4a-lm-QDF"/>
+                    <constraint firstItem="NNN-d2-gEg" firstAttribute="leading" secondItem="HRH-xk-hmd" secondAttribute="leading" constant="20" symbolic="YES" id="qLu-i5-3bt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="daysLeftLabel" destination="cwg-g7-ktJ" id="QKY-Q3-IHr"/>
+                <outlet property="eventImage" destination="NNN-d2-gEg" id="Uwl-bU-MMY"/>
+                <outlet property="eventName" destination="MrQ-3a-h44" id="Sfm-CJ-ErE"/>
+            </connections>
+            <point key="canvasLocation" x="222.46376811594206" y="201.89732142857142"/>
+        </tableViewCell>
+    </objects>
+</document>
