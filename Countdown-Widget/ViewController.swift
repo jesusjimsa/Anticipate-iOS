@@ -9,13 +9,49 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var mainTable: UITableView!
-    private var daysLeftTest = [2, 7, 12, 5, 4]
+    private var dates: [Date] = []
+    private var daysLeftTest: [Int] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mainTable.dataSource = self
         mainTable.delegate = self
+
+        fillWithElemsTest()
+
+        for elem in dates {
+            daysLeftTest.append(daysUntil(day: elem))
+        }
+    }
+
+    func daysUntil(day: Date) -> Int {
+        let today = Date()
+
+        return Calendar.current.dateComponents([.day], from: today, to: day).day! + 1    // Add 1 to include today
+    }
+
+    // Test function
+    func fillWithElemsTest() {
+        let formatter = DateFormatter()
+
+        formatter.dateFormat = "dd/MM/yyyy"
+
+        var day = formatter.date(from: "08/10/2022")!
+
+        dates.append(day)
+
+        day = formatter.date(from: "01/05/2022")!
+
+        dates.append(day)
+
+        day = formatter.date(from: "23/12/2022")!
+
+        dates.append(day)
+
+        day = formatter.date(from: "05/08/2022")!
+
+        dates.append(day)
     }
 
 
@@ -40,28 +76,22 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.section == 0 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
+        var cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
+        let formatter = DateFormatter()
 
-            if cell == nil {
-                cell = UITableViewCell(style: .default, reuseIdentifier: "myCell")
-                cell?.textLabel?.font = UIFont.systemFont(ofSize: 20)
-                cell?.accessoryType = .disclosureIndicator
-            }
+        formatter.dateFormat = "EEEE dd MMMM yyyy"
 
-            cell!.textLabel?.text = String(daysLeftTest[indexPath.row]) + " days left"
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "myCell")
+            cell?.textLabel?.font = UIFont.systemFont(ofSize: 20)
+            cell?.accessoryType = .disclosureIndicator
+        }
 
-            return cell!
-//        }
-//        else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "mycustomcell", for: indexPath) as?
-//                myCustomTableViewCell
-//
-//            cell?.myFirstLabel.text = String(indexPath.row + 1)
-//            cell?.mySecondLabel.text = String(myCountries[indexPath.row])
-//
-//            return cell!
-//        }
+        cell!.textLabel?.text = ("\(daysLeftTest[indexPath.row]) días para el " +
+                                 "\(formatter.string(from: dates[indexPath.row]))")
+
+
+        return cell!
     }
 }
 
