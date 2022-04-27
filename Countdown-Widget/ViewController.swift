@@ -23,6 +23,8 @@ class ViewController: UIViewController {
         for elem in dates {
             daysLeftTest.append(daysUntil(day: elem))
         }
+
+        mainTable.register(UINib(nibName: "customCounterCell", bundle: nil), forCellReuseIdentifier: "mycustomcell")
     }
 
     func daysUntil(day: Date) -> Int {
@@ -76,22 +78,31 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
+//        var cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
         let formatter = DateFormatter()
-
+//
         formatter.dateFormat = "EEEE dd MMMM yyyy"
+//
+//        if cell == nil {
+//            cell = UITableViewCell(style: .default, reuseIdentifier: "myCell")
+//            cell?.textLabel?.font = UIFont.systemFont(ofSize: 20)
+//            cell?.accessoryType = .disclosureIndicator
+//        }
+//
+//        cell!.textLabel?.text = ("\(daysLeftTest[indexPath.row]) días para el " +
+//                                 "\(formatter.string(from: dates[indexPath.row]))")
 
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "myCell")
-            cell?.textLabel?.font = UIFont.systemFont(ofSize: 20)
-            cell?.accessoryType = .disclosureIndicator
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mycustomcell", for: indexPath) as?
+            customCounterCell
 
-        cell!.textLabel?.text = ("\(daysLeftTest[indexPath.row]) días para el " +
-                                 "\(formatter.string(from: dates[indexPath.row]))")
-
+        cell?.eventNameLabel.text = "String(indexPath.row + 1)"
+        cell?.daysLeftLabel.text = ("\(daysLeftTest[indexPath.row]) días para el " +
+                                    "\(formatter.string(from: dates[indexPath.row]))")
 
         return cell!
+
+
+//        return cell!
     }
 }
 

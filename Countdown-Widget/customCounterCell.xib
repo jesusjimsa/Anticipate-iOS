@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,7 +22,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrQ-3a-h44">
-                        <rect key="frame" x="313.5" y="41" width="89.5" height="20.5"/>
+                        <rect key="frame" x="313.5" y="41" width="89.5" height="51"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -35,6 +35,7 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="cwg-g7-ktJ" firstAttribute="top" secondItem="MrQ-3a-h44" secondAttribute="bottom" constant="20" id="5hJ-pl-gYp"/>
                     <constraint firstItem="cwg-g7-ktJ" firstAttribute="centerY" secondItem="HRH-xk-hmd" secondAttribute="centerY" id="5iI-ZK-8Ty"/>
                     <constraint firstAttribute="bottom" secondItem="NNN-d2-gEg" secondAttribute="bottom" constant="15" id="AxF-bX-lPo"/>
                     <constraint firstItem="MrQ-3a-h44" firstAttribute="top" secondItem="HRH-xk-hmd" secondAttribute="topMargin" constant="30" id="E5Z-EU-8l6"/>
@@ -46,8 +47,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="daysLeftLabel" destination="cwg-g7-ktJ" id="QKY-Q3-IHr"/>
-                <outlet property="eventImage" destination="NNN-d2-gEg" id="Uwl-bU-MMY"/>
-                <outlet property="eventName" destination="MrQ-3a-h44" id="Sfm-CJ-ErE"/>
+                <outlet property="eventImageView" destination="NNN-d2-gEg" id="rgJ-bA-Rbu"/>
+                <outlet property="eventNameLabel" destination="MrQ-3a-h44" id="gOe-TJ-DuD"/>
             </connections>
             <point key="canvasLocation" x="222.46376811594206" y="201.89732142857142"/>
         </tableViewCell>
