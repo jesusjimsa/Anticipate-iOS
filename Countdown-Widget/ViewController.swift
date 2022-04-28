@@ -43,7 +43,7 @@ class ViewController: UIViewController {
 
         dates.append(day)
 
-        day = formatter.date(from: "01/05/2022")!
+        day = formatter.date(from: "01/05/2023")!
 
         dates.append(day)
 
@@ -78,36 +78,23 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
         let formatter = DateFormatter()
-//
+
         formatter.dateFormat = "EEEE dd MMMM yyyy"
-//
-//        if cell == nil {
-//            cell = UITableViewCell(style: .default, reuseIdentifier: "myCell")
-//            cell?.textLabel?.font = UIFont.systemFont(ofSize: 20)
-//            cell?.accessoryType = .disclosureIndicator
-//        }
-//
-//        cell!.textLabel?.text = ("\(daysLeftTest[indexPath.row]) días para el " +
-//                                 "\(formatter.string(from: dates[indexPath.row]))")
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "mycustomcell", for: indexPath) as?
             customCounterCell
 
-        cell?.eventNameLabel.text = "String(indexPath.row + 1)"
-        cell?.daysLeftLabel.text = ("\(daysLeftTest[indexPath.row]) días para el " +
-                                    "\(formatter.string(from: dates[indexPath.row]))")
+        cell?.eventNameLabel.text = "Evento increíble"
+        cell?.eventDateLabel.text = "\(formatter.string(from: dates[indexPath.row]))"
+        cell?.daysLeftLabel.text = "Faltan \(daysLeftTest[indexPath.row]) días"
 
         return cell!
-
-
-//        return cell!
     }
 }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(daysLeftTest[indexPath.row])
+//        print(daysLeftTest[indexPath.row])
     }
 }

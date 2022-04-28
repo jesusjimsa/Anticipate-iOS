@@ -10,20 +10,22 @@ import UIKit
 class customCounterCell: UITableViewCell {
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var daysLeftLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventImageView: UIImageView!
-    
+    @IBOutlet weak var arrowImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
         let eventImage = UIImage(named: "erizo")
-
         let targetSize = CGSize(width: 100, height: 100)
-
         let scaledImage = eventImage!.scalePreservingAspectRatio(
             targetSize: targetSize
         )
 
         eventImageView.image = scaledImage
+        arrowImageView.image = UIImage(systemName: "chevron.right")
+        arrowImageView.tintColor = .systemFill
 
         daysLeftLabel.font = UIFont.systemFont(ofSize: 20)
         daysLeftLabel.lineBreakMode = .byWordWrapping
