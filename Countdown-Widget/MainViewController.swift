@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     @IBOutlet weak var mainTable: UITableView!
     private var dates: [Date] = []
     private var daysLeftTest: [Int] = []
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: UITableViewDataSource {
+extension MainViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Counters"
@@ -80,7 +80,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let formatter = DateFormatter()
 
-        formatter.dateFormat = "EEEE dd MMMM yyyy"
+        formatter.dateFormat = "EEEE d MMMM yyyy"
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "mycustomcell", for: indexPath) as?
             customCounterCell
@@ -93,8 +93,15 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(daysLeftTest[indexPath.row])
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "detailedViewController") as!
+        DetailedViewController
+
+        nextViewController.daysLeftValue = daysLeftTest[indexPath.row]
+
+//        nextViewController.modalPresentationStyle = .
+        self.present(nextViewController, animated:true, completion:nil)
     }
 }
