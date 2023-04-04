@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Countdown-Widget
 //
-//  Created by Jesús Jiménez Sánchez on 20/3/23.
+//  Created by Jesús Jiménez Sánchez on 4/4/23.
 //
 
 import UIKit

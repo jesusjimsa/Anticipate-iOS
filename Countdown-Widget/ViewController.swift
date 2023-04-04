@@ -2,14 +2,16 @@
 //  ViewController.swift
 //  Countdown-Widget
 //
-//  Created by Jesús Jiménez Sánchez on 20/3/23.
+//  Created by Jesús Jiménez Sánchez on 4/4/23.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableview: UITableView!
-
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -17,14 +19,22 @@ class ViewController: UIViewController {
         tableview.dataSource = self
         tableview.delegate = self
 
-        tableview.register(UINib(nibName: "myCustomCell", bundle: nil), forCellReuseIdentifier: "myCustomCell")
+        tableview.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "customCell")
+
+        let settingsSymbol = UIImage(systemName: "gear")
+        settingsButton.setImage(settingsSymbol, for: .normal)
+        settingsButton.setTitle("", for: .normal)
+
+        navigationBar.delegate = self
     }
+
+
 
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "myCustomCell") as? myCustomCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as? customCell {
             return cell
         }
 
@@ -44,5 +54,11 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("myCountries[indexPath.row]")
+    }
+}
+
+extension ViewController: UINavigationBarDelegate {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }
