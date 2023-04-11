@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var newElementButton: UIButton!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -28,6 +29,12 @@ class ViewController: UIViewController {
         navigationBar.delegate = self
     }
 
+    @IBAction func openNewElementView(_ sender: Any) {
+        print("Press Add button")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "newElementVC")
+        self.present(vc, animated: true)
+    }
 
 
 }
