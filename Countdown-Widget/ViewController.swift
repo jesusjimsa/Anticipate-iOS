@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 class ViewController: UIViewController {
     @IBOutlet weak var newElementButton: UIButton!
@@ -13,6 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
+    @IBOutlet weak var addElementImageButton: UIButton!
+    @IBOutlet weak var addElementImageView: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -27,6 +31,15 @@ class ViewController: UIViewController {
         settingsButton.setTitle("", for: .normal)
 
         navigationBar.delegate = self
+    }
+
+    @IBAction func selectImageAddElementAction(_ sender: Any) {
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true)
     }
 
     @IBAction func openNewElementView(_ sender: Any) {
@@ -67,5 +80,25 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: UINavigationBarDelegate {
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
+    }
+}
+
+extension ViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true)
+
+        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            let previousImage = addElementImageView.image
+
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                DispatchQueue.main.async {
+                    guard let self = self, let image = image as? UIImage, self.addElementImageView.image == previousImage else {
+                        return
+                    }
+                    self.addElementImageView.image = image
+                }
+
+            }
+        }
     }
 }

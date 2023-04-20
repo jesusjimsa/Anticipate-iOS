@@ -34,15 +34,12 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Add"/>
-                                                <connections>
-                                                    <action selector="openNewElementView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="61s-cc-2FN"/>
-                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6zg-Wh-OLf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ldb-pN-Nv1">
                                 <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -50,20 +47,20 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6zg-Wh-OLf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LpY-Wa-1kw"/>
-                            <constraint firstItem="6zg-Wh-OLf" firstAttribute="top" secondItem="FKf-Rn-GdG" secondAttribute="bottom" id="NBC-x8-mHW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6zg-Wh-OLf" secondAttribute="trailing" id="Rfe-GB-EjQ"/>
+                            <constraint firstItem="Ldb-pN-Nv1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KHO-Qb-ttN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ldb-pN-Nv1" secondAttribute="trailing" id="RIz-yd-nQF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ldb-pN-Nv1" secondAttribute="bottom" id="Tpn-18-05N"/>
+                            <constraint firstItem="Ldb-pN-Nv1" firstAttribute="top" secondItem="FKf-Rn-GdG" secondAttribute="bottom" id="YO4-0d-G3D"/>
                             <constraint firstItem="FKf-Rn-GdG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aaD-Cw-s1x"/>
                             <constraint firstItem="FKf-Rn-GdG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dmh-oE-I4y"/>
                             <constraint firstItem="FKf-Rn-GdG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="npM-62-5ry"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6zg-Wh-OLf" secondAttribute="bottom" id="sRp-Gd-S7k"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="navigationBar" destination="FKf-Rn-GdG" id="KWD-SJ-nF6"/>
                         <outlet property="newElementButton" destination="Edf-WA-TNy" id="8Dg-Ub-MSK"/>
-                        <outlet property="settingsButton" destination="Zpf-QP-89F" id="jBN-qo-IcQ"/>
-                        <outlet property="tableview" destination="6zg-Wh-OLf" id="gqX-Ow-DTe"/>
+                        <outlet property="settingsButton" destination="Zpf-QP-89F" id="TYv-ip-Cki"/>
+                        <outlet property="tableview" destination="Ldb-pN-Nv1" id="QRo-ci-7cE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -73,7 +70,7 @@
         <!--View Controller-->
         <scene sceneID="uyX-o2-z94">
             <objects>
-                <viewController storyboardIdentifier="newElementVC" id="1X8-pV-Vnd" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newElementVC" id="1X8-pV-Vnd" customClass="ViewController" customModule="Countdown_Widget" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rLw-3c-LJK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,6 +108,9 @@
                                         <rect key="frame" x="228" y="79.5" width="146" height="35"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Select an image"/>
+                                        <connections>
+                                            <action selector="selectImageAddElementAction:" destination="3oc-8I-yGR" eventType="touchUpInside" id="RVm-ak-yMY"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K35-Ag-mpi">
                                         <rect key="frame" x="20" y="33" width="128" height="128"/>
@@ -150,8 +150,14 @@
                             <constraint firstItem="NLi-1T-xaJ" firstAttribute="leading" secondItem="rLw-3c-LJK" secondAttribute="leading" constant="5" id="iSX-sP-WGz"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="kUk-LQ-VU0"/>
+                    <connections>
+                        <outlet property="addElementImageButton" destination="6Y6-96-JHg" id="XQV-uB-FHE"/>
+                        <outlet property="addElementImageView" destination="K35-Ag-mpi" id="Goz-21-lco"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ILl-oJ-wJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="3oc-8I-yGR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="966.66666666666674" y="-248.4375"/>
         </scene>
