@@ -9,7 +9,9 @@ import UIKit
 import PhotosUI
 
 class AddItemController: UIViewController {
+    @IBOutlet weak var datePicker: UIDatePicker!
 
+    @IBOutlet weak var eventNameText: UITextField!
     @IBOutlet weak var addElementImageButton: UIButton!
     @IBOutlet weak var addElementImageView: UIImageView!
 
@@ -17,6 +19,7 @@ class AddItemController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        datePicker.minimumDate = Date() // Current date
 
     }
 
@@ -29,6 +32,17 @@ class AddItemController: UIViewController {
         present(picker, animated: true)
     }
 
+    @IBAction func saveEvent(_ sender: Any) {
+        let newEvent = Events()
+        let noTitleAlert = UIAlertController(title: "Alert", message: "You have not added a title", preferredStyle: .alert)
+
+        if eventNameText.hasText {
+            newEvent.title = eventNameText.text!
+        }
+        else {
+            self.present(noTitleAlert, animated: true, completion: nil)
+        }
+    }
 
 
 }
