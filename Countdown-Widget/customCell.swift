@@ -9,7 +9,8 @@ import UIKit
 
 class customCell: UITableViewCell {
     @IBOutlet weak var elemTitle: UILabel!
-    @IBOutlet weak var elemTimeLeft: UILabel!
+    @IBOutlet weak var daysLeftText: UILabel!
+    @IBOutlet weak var timeLeftLabel: UILabel!
     @IBOutlet weak var elemImage: UIImageView!
 
     override func awakeFromNib() {
@@ -18,7 +19,8 @@ class customCell: UITableViewCell {
 
         elemImage.image = UIImage(named: "link_img")
         elemTitle.text = "Ejemplo título"
-        elemTimeLeft.text = "14 days left"
+        daysLeftText.text = "Days Left"
+        timeLeftLabel.text = "14"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

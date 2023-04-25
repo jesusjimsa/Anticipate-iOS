@@ -38,9 +38,6 @@
                                                     <action selector="openNewElementView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WIr-X8-omq"/>
                                                 </connections>
                                             </button>
-                                            <connections>
-                                                <action selector="test_action:" destination="BYZ-38-t0r" id="MBW-u9-1eA"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
