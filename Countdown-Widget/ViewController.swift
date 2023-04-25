@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
-    @IBOutlet weak var addElementImageButton: UIButton!
-    @IBOutlet weak var addElementImageView: UIImageView!
+//    @IBOutlet weak var addElementImageButton: UIButton!
+//    @IBOutlet weak var addElementImageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +33,21 @@ class ViewController: UIViewController {
         navigationBar.delegate = self
     }
 
-    @IBAction func selectImageAddElementAction(_ sender: Any) {
-        var configuration = PHPickerConfiguration()
-        configuration.filter = .images
-
-        let picker = PHPickerViewController(configuration: configuration)
-        picker.delegate = self
-        present(picker, animated: true)
+//    @IBAction func selectImageAddElementAction(_ sender: Any) {
+//        var configuration = PHPickerConfiguration()
+//        configuration.filter = .images
+//
+//        let picker = PHPickerViewController(configuration: configuration)
+//        picker.delegate = self
+//        present(picker, animated: true)
+//    }
+    @IBAction func test_action(_ sender: Any) {
+        print("Press the other thing")
     }
 
     @IBAction func openNewElementView(_ sender: Any) {
         print("Press Add button")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "AddItem", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "newElementVC")
         self.present(vc, animated: true)
     }
@@ -82,23 +85,23 @@ extension ViewController: UINavigationBarDelegate {
         return .topAttached
     }
 }
-
-extension ViewController: PHPickerViewControllerDelegate {
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        dismiss(animated: true)
-
-        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
-            let previousImage = addElementImageView.image
-
-            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
-                DispatchQueue.main.async {
-                    guard let self = self, let image = image as? UIImage, self.addElementImageView.image == previousImage else {
-                        return
-                    }
-                    self.addElementImageView.image = image
-                }
-
-            }
-        }
-    }
-}
+//
+//extension ViewController: PHPickerViewControllerDelegate {
+//    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+//        dismiss(animated: true)
+//
+//        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+//            let previousImage = addElementImageView.image
+//
+//            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+//                DispatchQueue.main.async {
+//                    guard let self = self, let image = image as? UIImage, self.addElementImageView.image == previousImage else {
+//                        return
+//                    }
+//                    self.addElementImageView.image = image
+//                }
+//
+//            }
+//        }
+//    }
+//}
