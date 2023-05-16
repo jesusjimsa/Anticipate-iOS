@@ -77,6 +77,14 @@
                                     <action selector="saveEvent:" destination="piE-vq-HWp" eventType="touchUpInside" id="dZs-wG-gDa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRI-XZ-OkZ">
+                                <rect key="frame" x="20" y="69" width="77" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonAction:" destination="piE-vq-HWp" eventType="touchUpInside" id="0cU-zA-yhh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PBG-pC-adX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -88,6 +96,7 @@
                             <constraint firstItem="R3D-t9-Q6f" firstAttribute="top" secondItem="c2Q-cc-sYd" secondAttribute="bottom" constant="20" id="Gj8-Ij-uYc"/>
                             <constraint firstItem="IhS-Qg-LLF" firstAttribute="top" secondItem="dcd-no-8pK" secondAttribute="bottom" constant="20" id="HbS-md-FK7"/>
                             <constraint firstItem="ras-3M-gF4" firstAttribute="bottom" secondItem="PBG-pC-adX" secondAttribute="bottom" id="IXV-ou-3ZK"/>
+                            <constraint firstItem="qRI-XZ-OkZ" firstAttribute="leading" secondItem="PBG-pC-adX" secondAttribute="leading" constant="20" id="Ia3-wS-NUj"/>
                             <constraint firstItem="IhS-Qg-LLF" firstAttribute="leading" secondItem="PBG-pC-adX" secondAttribute="leading" constant="20" id="Pfs-fq-xQe"/>
                             <constraint firstItem="2ga-q9-EfI" firstAttribute="top" secondItem="PBG-pC-adX" secondAttribute="top" constant="10" id="ZYe-TW-Tbm"/>
                             <constraint firstItem="PBG-pC-adX" firstAttribute="trailing" secondItem="2ga-q9-EfI" secondAttribute="trailing" constant="20" id="Zqb-z5-skI"/>
@@ -98,6 +107,7 @@
                             <constraint firstItem="c2Q-cc-sYd" firstAttribute="top" secondItem="IhS-Qg-LLF" secondAttribute="bottom" constant="30" id="hlu-Uu-nCa"/>
                             <constraint firstItem="dcd-no-8pK" firstAttribute="leading" secondItem="PBG-pC-adX" secondAttribute="leading" constant="20" id="jU2-ld-8kN"/>
                             <constraint firstItem="PBG-pC-adX" firstAttribute="trailing" secondItem="ras-3M-gF4" secondAttribute="trailing" id="mm1-US-8sw"/>
+                            <constraint firstItem="qRI-XZ-OkZ" firstAttribute="top" secondItem="PBG-pC-adX" secondAttribute="top" constant="10" id="nev-EC-LEu"/>
                             <constraint firstItem="c2Q-cc-sYd" firstAttribute="leading" secondItem="PBG-pC-adX" secondAttribute="leading" constant="20" id="w6F-Na-iXP"/>
                         </constraints>
                     </view>

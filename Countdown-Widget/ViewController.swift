@@ -34,14 +34,20 @@ class ViewController: UIViewController {
         navigationBar.delegate = self
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         recuperarDatos()
     }
 
     @IBAction func openNewElementView(_ sender: Any) {
         let storyboard = UIStoryboard(name: "AddItem", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "newElementVC")
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true)
+    }
+
+    @IBAction func openSettings(_ sender: Any) {
+
     }
 
     func recuperarDatos() {
@@ -56,11 +62,25 @@ class ViewController: UIViewController {
             print("Error recuperando datos")
         }
     }
+
+    func daysBetween(start: Date, end: Date) -> Int {
+            return Calendar.current.dateComponents([.day], from: start, to: end).day!
+        }
+
+    func daysLeft(date: Date) -> Int {
+        return daysBetween(start: Date(), end: date)
+    }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as? customCell {
+            if UserEventsList != nil {
+                cell.timeLeftLabel.text = String(daysLeft(date: UserEventsList![indexPath.row].date!))
+                cell.elemTitle.text = UserEventsList![indexPath.row].title!
+                cell.elemImage.image = UIImage(data: UserEventsList![indexPath.row].image!)
+            }
+
             return cell
         }
 

@@ -25,6 +25,10 @@ class AddItemController: UIViewController {
         datePicker.minimumDate = Date() // Current date
 
     }
+    
+    @IBAction func cancelButtonAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
     @IBAction func selectImageAddElementAction(_ sender: Any) {
         var configuration = PHPickerConfiguration()
