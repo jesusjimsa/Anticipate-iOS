@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
     @IBOutlet weak var newElementButton: UIButton!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
+
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+    private var UserEventsList: [UserCountdowns]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +34,53 @@ class ViewController: UIViewController {
         navigationBar.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        recuperarDatos()
+    }
+
     @IBAction func openNewElementView(_ sender: Any) {
         let storyboard = UIStoryboard(name: "AddItem", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "newElementVC")
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true)
+    }
+
+    @IBAction func openSettings(_ sender: Any) {
+
+    }
+
+    func recuperarDatos() {
+        do {
+            self.UserEventsList = try context.fetch(UserCountdowns.fetchRequest())
+
+            DispatchQueue.main.async {
+                self.tableview.reloadData()
+            }
+        }
+        catch {
+            print("Error recuperando datos")
+        }
+    }
+
+    func daysBetween(start: Date, end: Date) -> Int {
+            return Calendar.current.dateComponents([.day], from: start, to: end).day!
+        }
+
+    func daysLeft(date: Date) -> Int {
+        return daysBetween(start: Date(), end: date)
     }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as? customCell {
+            if UserEventsList != nil {
+                cell.timeLeftLabel.text = String(daysLeft(date: UserEventsList![indexPath.row].date!))
+                cell.elemTitle.text = UserEventsList![indexPath.row].title!
+                cell.elemImage.image = UIImage(data: UserEventsList![indexPath.row].image!)
+            }
+
             return cell
         }
 
@@ -46,7 +88,12 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 13
+        if UserEventsList == nil {
+            return 0
+        }
+        else {
+            return UserEventsList!.count
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

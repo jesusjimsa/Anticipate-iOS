@@ -7,17 +7,27 @@
 
 import UIKit
 import PhotosUI
+import CoreData
 
 class AddItemController: UIViewController {
+    @IBOutlet weak var datePicker: UIDatePicker!
 
+    @IBOutlet weak var eventNameText: UITextField!
     @IBOutlet weak var addElementImageButton: UIButton!
     @IBOutlet weak var addElementImageView: UIImageView!
+
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        datePicker.minimumDate = Date() // Current date
 
+    }
+    
+    @IBAction func cancelButtonAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func selectImageAddElementAction(_ sender: Any) {
@@ -29,6 +39,65 @@ class AddItemController: UIViewController {
         present(picker, animated: true)
     }
 
+    @IBAction func saveEvent(_ sender: Any) {
+        let newEvent = UserCountdowns(context: self.context)
+        let noTitleAlert = UIAlertController(title: "Alert", message: "You have not added a title", preferredStyle: .alert)
+        let noImageAlert = UIAlertController(title: "Alert", message: "You have not added an image", preferredStyle: .alert)
+
+        noTitleAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+                case .default:
+                print("default")
+
+                case .cancel:
+                print("cancel")
+
+                case .destructive:
+                print("destructive")
+
+            @unknown default:
+                print("Unknown")
+            }
+        }))
+
+        noImageAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+                case .default:
+                print("default")
+
+                case .cancel:
+                print("cancel")
+
+                case .destructive:
+                print("destructive")
+
+            @unknown default:
+                print("Unknown")
+            }
+        }))
+
+        if eventNameText.hasText {
+            newEvent.title = eventNameText.text
+        }
+        else {
+            self.present(noTitleAlert, animated: true, completion: nil)
+            return
+        }
+
+        newEvent.date = datePicker.date
+
+        if addElementImageView.image != nil {
+            newEvent.image = addElementImageView.image?.pngData()
+        }
+        else {
+            self.present(noImageAlert, animated: true, completion: nil)
+            return
+        }
+
+        try! self.context.save()
+
+        dismiss(animated: true, completion: nil)
+    }
 
 
 }
