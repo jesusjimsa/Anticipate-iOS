@@ -20,6 +20,7 @@
 		889EEAB829F8519700D284C0 /* AddItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889EEAB729F8519700D284C0 /* AddItem.storyboard */; };
 		889EEABA29F853D200D284C0 /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889EEAB929F853D200D284C0 /* AddItemController.swift */; };
 		889EEABD29F863D500D284C0 /* EventsList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 889EEABB29F863D400D284C0 /* EventsList.xcdatamodeld */; };
+		88E98F642A1D4F2200681113 /* DetailedView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E98F632A1D4F2200681113 /* DetailedView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		889EEAB729F8519700D284C0 /* AddItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddItem.storyboard; sourceTree = "<group>"; };
 		889EEAB929F853D200D284C0 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
 		889EEABC29F863D500D284C0 /* EventsList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventsList.xcdatamodel; sourceTree = "<group>"; };
+		88E98F632A1D4F2200681113 /* DetailedView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				880B64F129DCA555007ACEF4 /* Main.storyboard */,
 				889EEAB929F853D200D284C0 /* AddItemController.swift */,
 				889EEAB729F8519700D284C0 /* AddItem.storyboard */,
+				88E98F632A1D4F2200681113 /* DetailedView.storyboard */,
 				880B64F429DCA559007ACEF4 /* Assets.xcassets */,
 				880B64F629DCA559007ACEF4 /* LaunchScreen.storyboard */,
 				880B64F929DCA559007ACEF4 /* Info.plist */,
@@ -159,6 +162,7 @@
 				880B64F529DCA559007ACEF4 /* Assets.xcassets in Resources */,
 				880B650229DCADA0007ACEF4 /* customCell.xib in Resources */,
 				880B64F329DCA555007ACEF4 /* Main.storyboard in Resources */,
+				88E98F642A1D4F2200681113 /* DetailedView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
