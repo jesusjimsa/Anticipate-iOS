@@ -132,6 +132,7 @@ extension ViewController: UITableViewDelegate {
             viewController.timeLeftText = String(daysLeft(date: selectedEvent.date!))
             viewController.titleText = selectedEvent.title!
             viewController.image = UIImage(data: selectedEvent.image!)
+            viewController.eventIndex = indexPath.row
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

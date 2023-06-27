@@ -21,7 +21,10 @@ class DetailedViewController: UIViewController {
     var timeLeftText: String?
     var daysLeftText: String?
     var image: UIImage?
-    
+    var eventIndex: Int?
+
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var UserEventsList: [UserCountdowns]?
     
     override func viewDidLoad() {
         if titleText != nil {
@@ -43,5 +46,31 @@ class DetailedViewController: UIViewController {
         if timeLeftText != nil {
             detailedTimeLeftLabel.text = timeLeftText
         }
+    }
+
+    func recuperarDatos() {
+        do {
+            self.UserEventsList = try context.fetch(UserCountdowns.fetchRequest())
+        }
+        catch {
+            print("Error recuperando datos")
+        }
+    }
+
+    @IBAction func deleteEvent(_ sender: Any) {
+        let areYouSureAlert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to delete this event?", preferredStyle: .alert)
+
+        areYouSureAlert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { action in
+            self.recuperarDatos()
+            self.context.delete(self.UserEventsList![self.eventIndex!])
+            try! self.context.save()
+            _ = self.navigationController?.popToRootViewController(animated: true)
+        }))
+
+        areYouSureAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            // Nothing
+        }))
+
+        self.present(areYouSureAlert, animated: true, completion: nil)
     }
 }
