@@ -20,6 +20,7 @@
 		889EEAB829F8519700D284C0 /* AddItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889EEAB729F8519700D284C0 /* AddItem.storyboard */; };
 		889EEABA29F853D200D284C0 /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889EEAB929F853D200D284C0 /* AddItemController.swift */; };
 		889EEABD29F863D500D284C0 /* EventsList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 889EEABB29F863D400D284C0 /* EventsList.xcdatamodeld */; };
+		88C234362A54A50E001CFB2A /* DaysLeftCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C234352A54A50E001CFB2A /* DaysLeftCalculator.swift */; };
 		88E98F642A1D4F2200681113 /* DetailedView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E98F632A1D4F2200681113 /* DetailedView.storyboard */; };
 		88E98F682A2675C900681113 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E98F672A2675C900681113 /* DetailedViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		889EEAB729F8519700D284C0 /* AddItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddItem.storyboard; sourceTree = "<group>"; };
 		889EEAB929F853D200D284C0 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
 		889EEABC29F863D500D284C0 /* EventsList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventsList.xcdatamodel; sourceTree = "<group>"; };
+		88C234352A54A50E001CFB2A /* DaysLeftCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysLeftCalculator.swift; sourceTree = "<group>"; };
 		88E98F632A1D4F2200681113 /* DetailedView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedView.storyboard; sourceTree = "<group>"; };
 		88E98F672A2675C900681113 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,7 @@
 				880B64FF29DCADA0007ACEF4 /* customCell.swift */,
 				880B650029DCADA0007ACEF4 /* customCell.xib */,
 				889EEABB29F863D400D284C0 /* EventsList.xcdatamodeld */,
+				88C234352A54A50E001CFB2A /* DaysLeftCalculator.swift */,
 			);
 			path = "Countdown-Widget";
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				88289C112A01995A001CD878 /* UserCountdowns+CoreDataClass.swift in Sources */,
 				88E98F682A2675C900681113 /* DetailedViewController.swift in Sources */,
 				880B64EC29DCA555007ACEF4 /* AppDelegate.swift in Sources */,
+				88C234362A54A50E001CFB2A /* DaysLeftCalculator.swift in Sources */,
 				880B650129DCADA0007ACEF4 /* customCell.swift in Sources */,
 				880B64EE29DCA555007ACEF4 /* SceneDelegate.swift in Sources */,
 			);

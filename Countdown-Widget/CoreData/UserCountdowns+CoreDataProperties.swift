@@ -19,6 +19,7 @@ extension UserCountdowns {
     @NSManaged public var date: Date?
     @NSManaged public var image: Data?
     @NSManaged public var title: String?
+    @NSManaged public var id: String?
 
 }
 

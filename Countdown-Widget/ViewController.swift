@@ -71,21 +71,19 @@ class ViewController: UIViewController {
             print("Error recuperando datos")
         }
     }
-
-    func daysBetween(start: Date, end: Date) -> Int {
-            return Calendar.current.dateComponents([.day], from: start, to: end).day!
-        }
-
-    func daysLeft(date: Date) -> Int {
-        return daysBetween(start: Date(), end: date)
-    }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as? customCell {
             if UserEventsList != nil {
-                var timeLeft = String(daysLeft(date: UserEventsList![indexPath.row].date!))
+                var timeLeft: String = ""
+                if let cellDate = UserEventsList![indexPath.row].date {
+                    timeLeft = String(daysLeft(date: UserEventsList![indexPath.row].date!))
+                }
+                else {
+                    return UITableViewCell()
+                }
 
                 // Set time left to 0 when displaying a past event
                 if Int(timeLeft)! < 0 {
@@ -134,6 +132,7 @@ extension ViewController: UITableViewDelegate {
             viewController.image = UIImage(data: selectedEvent.image!)
             viewController.eventIndex = indexPath.row
             viewController.eventDate = selectedEvent.date
+            viewController.eventID = selectedEvent.id
 
             self.navigationController?.pushViewController(viewController, animated: true)
         }

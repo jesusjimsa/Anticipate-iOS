@@ -23,6 +23,7 @@ class DetailedViewController: UIViewController {
     var image: UIImage?
     var eventIndex: Int?
     var eventDate: Date?
+    var eventID: String?
 
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var UserEventsList: [UserCountdowns]?
@@ -44,9 +45,25 @@ class DetailedViewController: UIViewController {
             detailedDaysLeftLabel.text = "Days Left"
         }
 
-        if timeLeftText != nil {
-            detailedTimeLeftLabel.text = timeLeftText
+        if eventDate != nil {
+            let left = daysLeft(date: eventDate!)
+            detailedTimeLeftLabel.text = left >= 0 ? String(left) : "0"
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        recuperarDatos()
+
+        updateDetailedUI()
+    }
+
+    // Update all elements in the UI after editing an event
+    func updateDetailedUI() {
+        detailedTitleLabel.text = self.UserEventsList![self.eventIndex!].title
+        detailedImageView.image =  UIImage(data: self.UserEventsList![self.eventIndex!].image!)
+        detailedTimeLeftLabel.text = String(daysLeft(date: self.UserEventsList![self.eventIndex!].date!))
     }
 
     func recuperarDatos() {
@@ -87,7 +104,14 @@ class DetailedViewController: UIViewController {
 
             viewController.editingImage = detailedImageView.image
             viewController.editingTitle = detailedTitleLabel.text
-            viewController.editingDate = eventDate
+
+            if eventDate != nil {
+                viewController.editingDate = eventDate
+            }
+
+            if eventID != nil {
+                viewController.editingID = eventID
+            }
 
             self.present(viewController, animated: true)
         }

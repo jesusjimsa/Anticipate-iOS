@@ -24,6 +24,7 @@ class AddItemController: UIViewController {
     var editingImage: UIImage?
     var editingTitle: String?
     var editingDate: Date?
+    var editingID: String?
 
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -53,6 +54,37 @@ class AddItemController: UIViewController {
             }
         }
     }
+
+    func generateRandomID() -> String {
+        let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let length = 6
+        var randomString = ""
+
+        for _ in 0..<length {
+            let randomIndex = Int.random(in: 0..<characters.count)
+            let character = characters[characters.index(characters.startIndex, offsetBy: randomIndex)]
+
+            randomString.append(character)
+        }
+
+        return randomString
+    }
+
+    func isIDAlreadyPresent(id: String) -> Bool {
+        let fetchRequest: NSFetchRequest<UserCountdowns> = UserCountdowns.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        fetchRequest.fetchLimit = 1 // Optimize performance by limiting the fetch to 1 result
+
+        do {
+            let count = try context.count(for: fetchRequest)
+            return count > 0
+        } catch {
+            print("Error checking ID existence: \(error)")
+            return false
+        }
+    }
+
+
     
     @IBAction func cancelButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -68,9 +100,9 @@ class AddItemController: UIViewController {
     }
 
     @IBAction func saveEvent(_ sender: Any) {
-        let newEvent = UserCountdowns(context: self.context)
         let noTitleAlert = UIAlertController(title: "Alert", message: "You have not added a title", preferredStyle: .alert)
         let noImageAlert = UIAlertController(title: "Alert", message: "You have not added an image", preferredStyle: .alert)
+        var newID: String = generateRandomID()
 
         noTitleAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             return
@@ -80,25 +112,47 @@ class AddItemController: UIViewController {
             return
         }))
 
-        if eventNameText.hasText {
-            newEvent.title = eventNameText.text
-        }
-        else {
+        if !eventNameText.hasText {
             self.present(noTitleAlert, animated: true, completion: nil)
             return
         }
 
-        newEvent.date = datePicker.date
-
-        if addElementImageView.image != nil {
-            newEvent.image = addElementImageView.image?.pngData()
-        }
-        else {
+        if addElementImageView.image == nil {
             self.present(noImageAlert, animated: true, completion: nil)
             return
         }
 
-        try! self.context.save()
+        // Generate new random ID if it's already present
+        while isIDAlreadyPresent(id: newID) {
+            newID = generateRandomID()
+        }
+
+        do {
+            if !isEditingEvent {
+                let newEvent = UserCountdowns(context: self.context)
+
+                newEvent.id = newID
+                newEvent.title = eventNameText.text
+                newEvent.date = datePicker.date
+                newEvent.image = addElementImageView.image?.pngData()
+            }
+            else {
+                let fetchRequest: NSFetchRequest<UserCountdowns> = UserCountdowns.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "id == %@", editingID!)
+
+                let fetchedEvent = try context.fetch(fetchRequest)
+                if let eventToUpdate = fetchedEvent.first {
+                    eventToUpdate.date = datePicker.date
+                    eventToUpdate.image = addElementImageView.image?.pngData()
+                    eventToUpdate.title = eventNameText.text
+                }
+            }
+
+            try self.context.save()
+        }
+        catch {
+            print("Error saving or updating event: \(error)")
+        }
 
         dismiss(animated: true, completion: nil)
     }
