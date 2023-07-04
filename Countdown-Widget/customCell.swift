@@ -18,6 +18,7 @@ class customCell: UITableViewCell {
         // Initialization code
 
         elemImage.image = UIImage(named: "link_img")
+        elemImage.layer.cornerRadius = 8.0
         elemImage.contentMode = UIView.ContentMode.scaleAspectFill
         elemTitle.text = "Ejemplo título"
         daysLeftText.text = "Days Left"

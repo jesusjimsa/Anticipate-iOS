@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="obA-g8-Qwc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,36 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKf-Rn-GdG">
-                                <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="wIb-Wg-jgR">
-                                        <nil key="title"/>
-                                        <barButtonItem key="leftBarButtonItem" style="done" id="fi3-bH-032">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Zpf-QP-89F">
-                                                <rect key="frame" x="20" y="4.5" width="92" height="35"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Settings"/>
-                                                <connections>
-                                                    <action selector="openSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jmG-Cb-dYd"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="done" id="FH2-P4-b1N">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Edf-WA-TNy">
-                                                <rect key="frame" x="307" y="4.5" width="87" height="35"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Add"/>
-                                                <connections>
-                                                    <action selector="openNewElementView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WIr-X8-omq"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ldb-pN-Nv1">
                                 <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -54,17 +25,34 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Ldb-pN-Nv1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2nO-Iq-zH7"/>
                             <constraint firstItem="Ldb-pN-Nv1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KHO-Qb-ttN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ldb-pN-Nv1" secondAttribute="trailing" id="RIz-yd-nQF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ldb-pN-Nv1" secondAttribute="bottom" id="Tpn-18-05N"/>
-                            <constraint firstItem="Ldb-pN-Nv1" firstAttribute="top" secondItem="FKf-Rn-GdG" secondAttribute="bottom" id="YO4-0d-G3D"/>
-                            <constraint firstItem="FKf-Rn-GdG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aaD-Cw-s1x"/>
-                            <constraint firstItem="FKf-Rn-GdG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dmh-oE-I4y"/>
-                            <constraint firstItem="FKf-Rn-GdG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="npM-62-5ry"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="azb-AI-fIg">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="fi3-bH-032">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Zpf-QP-89F">
+                                <rect key="frame" x="20" y="4.5" width="92" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Settings"/>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" id="FH2-P4-b1N">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Edf-WA-TNy">
+                                <rect key="frame" x="307" y="4.5" width="87" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                <connections>
+                                    <action selector="openNewElementView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WIr-X8-omq"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="navigationBar" destination="FKf-Rn-GdG" id="KWD-SJ-nF6"/>
                         <outlet property="newElementButton" destination="Edf-WA-TNy" id="8Dg-Ub-MSK"/>
                         <outlet property="settingsButton" destination="Zpf-QP-89F" id="TYv-ip-Cki"/>
                         <outlet property="tableview" destination="Ldb-pN-Nv1" id="QRo-ci-7cE"/>
@@ -72,7 +60,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="4"/>
+            <point key="canvasLocation" x="-393" y="3"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oCW-60-jsu">
+            <objects>
+                <navigationController id="obA-g8-Qwc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NC2-K9-ff2">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="39s-Og-xhQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m8S-5q-s5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1610" y="3"/>
         </scene>
     </scenes>
     <resources>

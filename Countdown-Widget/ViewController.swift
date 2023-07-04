@@ -31,18 +31,27 @@ class ViewController: UIViewController {
         settingsButton.setImage(settingsSymbol, for: .normal)
         settingsButton.setTitle("", for: .normal)
 
-        navigationBar.delegate = self
+        navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Events"
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let selectedIndexPath = tableview.indexPathForSelectedRow {
+            tableview.deselectRow(at: selectedIndexPath, animated: animated)
+        }
+
         recuperarDatos()
     }
 
     @IBAction func openNewElementView(_ sender: Any) {
         let storyboard = UIStoryboard(name: "AddItem", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "newElementVC")
+
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .crossDissolve
+
         self.present(vc, animated: true)
     }
 
@@ -62,21 +71,30 @@ class ViewController: UIViewController {
             print("Error recuperando datos")
         }
     }
-
-    func daysBetween(start: Date, end: Date) -> Int {
-            return Calendar.current.dateComponents([.day], from: start, to: end).day!
-        }
-
-    func daysLeft(date: Date) -> Int {
-        return daysBetween(start: Date(), end: date)
-    }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as? customCell {
             if UserEventsList != nil {
-                cell.timeLeftLabel.text = String(daysLeft(date: UserEventsList![indexPath.row].date!))
+                var timeLeft: String = ""
+                if let cellDate = UserEventsList![indexPath.row].date {
+                    timeLeft = String(daysLeft(date: UserEventsList![indexPath.row].date!))
+                }
+                else {
+                    return UITableViewCell()
+                }
+
+                // Set time left to 0 when displaying a past event
+                if Int(timeLeft)! < 0 {
+                    timeLeft = "0"
+                }
+                else if Int(timeLeft) == 1 {
+                    // Change to singular when just one day left
+                    cell.daysLeftText.text = "Day Left"
+                }
+
+                cell.timeLeftLabel.text = timeLeft
                 cell.elemTitle.text = UserEventsList![indexPath.row].title!
                 cell.elemImage.image = UIImage(data: UserEventsList![indexPath.row].image!)
             }
@@ -104,7 +122,20 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("myCountries[indexPath.row]")
+        let selectedEvent = UserEventsList![indexPath.row]
+        let storyboard = UIStoryboard(name: "DetailedView", bundle: nil)
+
+        if let viewController = storyboard.instantiateViewController(identifier: "detailedView") as? DetailedViewController {
+
+            viewController.timeLeftText = String(daysLeft(date: selectedEvent.date!))
+            viewController.titleText = selectedEvent.title!
+            viewController.image = UIImage(data: selectedEvent.image!)
+            viewController.eventIndex = indexPath.row
+            viewController.eventDate = selectedEvent.date
+            viewController.eventID = selectedEvent.id
+
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 
