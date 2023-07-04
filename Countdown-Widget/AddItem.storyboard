@@ -2,7 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Element" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbi-em-Cmg">
-                                <rect key="frame" x="20" y="114" width="281" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbi-em-Cmg">
+                                <rect key="frame" x="20" y="114" width="228" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -115,6 +116,9 @@
                     <connections>
                         <outlet property="addElementImageButton" destination="l2G-lh-7OD" id="7RC-pa-Zy9"/>
                         <outlet property="addElementImageView" destination="icY-qz-ZSe" id="sKe-tG-Stl"/>
+                        <outlet property="addEventChangeName" destination="dcd-no-8pK" id="IXg-cK-SlD"/>
+                        <outlet property="addEventPageTitle" destination="Jbi-em-Cmg" id="Pxi-4t-KUw"/>
+                        <outlet property="addEventSelectDateTitle" destination="c2Q-cc-sYd" id="Srb-kU-Zgn"/>
                         <outlet property="datePicker" destination="R3D-t9-Q6f" id="a57-II-zfP"/>
                         <outlet property="eventNameText" destination="IhS-Qg-LLF" id="owx-dY-mCp"/>
                     </connections>

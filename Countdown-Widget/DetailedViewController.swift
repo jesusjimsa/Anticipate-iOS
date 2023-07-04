@@ -22,6 +22,7 @@ class DetailedViewController: UIViewController {
     var daysLeftText: String?
     var image: UIImage?
     var eventIndex: Int?
+    var eventDate: Date?
 
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var UserEventsList: [UserCountdowns]?
@@ -73,4 +74,23 @@ class DetailedViewController: UIViewController {
 
         self.present(areYouSureAlert, animated: true, completion: nil)
     }
+
+    @IBAction func editEvent(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "AddItem", bundle: nil)
+
+        if let viewController = storyboard.instantiateViewController(identifier: "newElementVC") as? AddItemController {
+
+            viewController.modalPresentationStyle = .fullScreen
+            viewController.modalTransitionStyle = .crossDissolve
+
+            viewController.isEditingEvent = true
+
+            viewController.editingImage = detailedImageView.image
+            viewController.editingTitle = detailedTitleLabel.text
+            viewController.editingDate = eventDate
+
+            self.present(viewController, animated: true)
+        }
+    }
+    
 }

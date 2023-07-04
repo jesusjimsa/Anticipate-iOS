@@ -133,6 +133,8 @@ extension ViewController: UITableViewDelegate {
             viewController.titleText = selectedEvent.title!
             viewController.image = UIImage(data: selectedEvent.image!)
             viewController.eventIndex = indexPath.row
+            viewController.eventDate = selectedEvent.date
+
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

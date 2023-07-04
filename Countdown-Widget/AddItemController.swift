@@ -12,9 +12,18 @@ import CoreData
 class AddItemController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
 
+    @IBOutlet weak var addEventPageTitle: UILabel!
+    @IBOutlet weak var addEventChangeName: UILabel!
+    @IBOutlet weak var addEventSelectDateTitle: UILabel!
     @IBOutlet weak var eventNameText: UITextField!
     @IBOutlet weak var addElementImageButton: UIButton!
     @IBOutlet weak var addElementImageView: UIImageView!
+
+    var isEditingEvent: Bool = false
+
+    var editingImage: UIImage?
+    var editingTitle: String?
+    var editingDate: Date?
 
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -24,6 +33,25 @@ class AddItemController: UIViewController {
 
         datePicker.minimumDate = Date() // Current date
 
+        if isEditingEvent {
+            addEventPageTitle.text = "Edit Event"
+            addEventChangeName.text = "Edit the title of your event"
+            eventNameText.text = ""
+            addEventSelectDateTitle.text = "Edit the date"
+            addElementImageButton.setTitle("Select new image", for: .normal)
+
+            if editingImage != nil {
+                addElementImageView.image = editingImage
+            }
+
+            if editingTitle != nil {
+                eventNameText.text = editingTitle
+            }
+
+            if editingDate != nil {
+                datePicker.date = editingDate!
+            }
+        }
     }
     
     @IBAction func cancelButtonAction(_ sender: Any) {
@@ -45,35 +73,11 @@ class AddItemController: UIViewController {
         let noImageAlert = UIAlertController(title: "Alert", message: "You have not added an image", preferredStyle: .alert)
 
         noTitleAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            switch action.style{
-                case .default:
-                print("default")
-
-                case .cancel:
-                print("cancel")
-
-                case .destructive:
-                print("destructive")
-
-            @unknown default:
-                print("Unknown")
-            }
+            return
         }))
 
         noImageAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            switch action.style{
-                case .default:
-                print("default")
-
-                case .cancel:
-                print("cancel")
-
-                case .destructive:
-                print("destructive")
-
-            @unknown default:
-                print("Unknown")
-            }
+            return
         }))
 
         if eventNameText.hasText {
