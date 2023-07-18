@@ -1,0 +1,50 @@
+//
+//  SettingsController.swift
+//  Countdown-Widget
+//
+//  Created by Jesús Jiménez Sánchez on 18/7/23.
+//
+
+import UIKit
+
+class SettingsController: UIViewController {
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+
+    @IBAction func emailDevButton(_ sender: Any) {
+        let email = "jesusjimsa@icloud.com"
+        if let url = URL(string: "mailto:\(email)") {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            }
+            else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+
+    @IBAction func openTwitterProfile(_ sender: Any) {
+        let screenName =  "jesusjimsa"
+        let appURL = URL(string: "twitter://user?screen_name=\(screenName)")!
+        let webURL = URL(string: "https://twitter.com/\(screenName)")!
+
+        let application = UIApplication.shared
+
+        if application.canOpenURL(appURL) {
+            application.open(appURL, options:  [:], completionHandler:  nil)
+        }
+        else {
+            application.open(webURL, options:  [:], completionHandler:  nil)
+        }
+    }
+
+    @IBAction func openRepoGithub(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://github.com/jesusjimsa/Countdown-Widget-iOS")!, options: [:],
+                                  completionHandler: nil)
+    }
+}
+
