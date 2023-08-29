@@ -10,7 +10,7 @@ import CoreData
 
 class ViewController: UIViewController {
     @IBOutlet weak var newElementButton: UIButton!
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var eventsTableView: UITableView!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
 
@@ -22,10 +22,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        tableview.dataSource = self
-        tableview.delegate = self
+        setThemeDidLoad()
 
-        tableview.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        eventsTableView.dataSource = self
+        eventsTableView.delegate = self
+
+        eventsTableView.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "customCell")
 
         let settingsSymbol = UIImage(systemName: "gear")
         settingsButton.setImage(settingsSymbol, for: .normal)
@@ -38,8 +40,8 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let selectedIndexPath = tableview.indexPathForSelectedRow {
-            tableview.deselectRow(at: selectedIndexPath, animated: animated)
+        if let selectedIndexPath = eventsTableView.indexPathForSelectedRow {
+            eventsTableView.deselectRow(at: selectedIndexPath, animated: animated)
         }
 
         recuperarDatos()
@@ -64,11 +66,32 @@ class ViewController: UIViewController {
             self.UserEventsList = try context.fetch(UserCountdowns.fetchRequest())
 
             DispatchQueue.main.async {
-                self.tableview.reloadData()
+                self.eventsTableView.reloadData()
             }
         }
         catch {
             print("Error recuperando datos")
+        }
+    }
+
+    func setThemeDidLoad() {
+        let defaults = UserDefaults.standard
+        let appTheme = defaults.string(forKey: "appTheme")
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+
+        if let windowScene = windowScene {
+            windowScene.windows.forEach { window in
+                switch appTheme {
+                case "Dark":
+                    window.overrideUserInterfaceStyle = .dark
+                case "Light":
+                    window.overrideUserInterfaceStyle = .light
+                case "System":
+                    window.overrideUserInterfaceStyle = .unspecified
+                default:
+                    window.overrideUserInterfaceStyle = .unspecified
+                }
+            }
         }
     }
 }
@@ -77,13 +100,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as? customCell {
             if UserEventsList != nil {
-                var timeLeft: String = ""
-                if let cellDate = UserEventsList![indexPath.row].date {
-                    timeLeft = String(daysLeft(date: UserEventsList![indexPath.row].date!))
-                }
-                else {
-                    return UITableViewCell()
-                }
+                var timeLeft: String = String(daysLeft(date: UserEventsList![indexPath.row].date!))
 
                 // Set time left to 0 when displaying a past event
                 if Int(timeLeft)! < 0 {

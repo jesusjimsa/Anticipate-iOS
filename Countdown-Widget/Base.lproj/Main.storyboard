@@ -56,9 +56,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventsTableView" destination="Ldb-pN-Nv1" id="QRo-ci-7cE"/>
                         <outlet property="newElementButton" destination="Edf-WA-TNy" id="8Dg-Ub-MSK"/>
                         <outlet property="settingsButton" destination="Zpf-QP-89F" id="TYv-ip-Cki"/>
-                        <outlet property="tableview" destination="Ldb-pN-Nv1" id="QRo-ci-7cE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -89,11 +89,17 @@
                                 <rect key="frame" x="10" y="260" width="394" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="🌓 Theme"/>
+                                <connections>
+                                    <action selector="setDarkMode:" destination="gir-wr-Neq" eventType="touchUpInside" id="kqA-bk-LNg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiE-7n-QGp">
                                 <rect key="frame" x="10" y="315" width="394" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="📱 App icon"/>
+                                <connections>
+                                    <segue destination="hlW-Fz-8OP" kind="show" id="TJR-NN-BAk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ob-jp-nT7">
                                 <rect key="frame" x="10" y="370" width="394" height="35"/>
@@ -147,11 +153,45 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c0e-Vg-n7k"/>
+                    <connections>
+                        <outlet property="appIcon" destination="3FK-tc-H6Q" id="Vx5-Qi-boD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JyU-mp-4xf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="oG3-YI-g9K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="784" y="3"/>
+        </scene>
+        <!--Icons Controller-->
+        <scene sceneID="a9U-0m-mQP">
+            <objects>
+                <viewController id="hlW-Fz-8OP" customClass="IconsController" customModule="Countdown_Widget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9G0-ue-Ljp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="A60-vG-OHx">
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="c5v-iG-4ZF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="A60-vG-OHx" firstAttribute="top" secondItem="c5v-iG-4ZF" secondAttribute="top" id="0bw-8h-GyF"/>
+                            <constraint firstItem="A60-vG-OHx" firstAttribute="leading" secondItem="c5v-iG-4ZF" secondAttribute="leading" id="22j-Fy-yAE"/>
+                            <constraint firstItem="c5v-iG-4ZF" firstAttribute="trailing" secondItem="A60-vG-OHx" secondAttribute="trailing" id="8Pg-Nt-dzs"/>
+                            <constraint firstItem="c5v-iG-4ZF" firstAttribute="bottom" secondItem="A60-vG-OHx" secondAttribute="bottom" id="cLd-yq-Xdu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="063-34-cYb"/>
+                    <connections>
+                        <outlet property="iconsTableView" destination="A60-vG-OHx" id="zyo-zs-ysx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q83-hB-0Ju" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1723" y="3"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oCW-60-jsu">
