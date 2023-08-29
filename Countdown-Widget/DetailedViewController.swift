@@ -10,7 +10,6 @@ import CoreData
 
 class DetailedViewController: UIViewController {
 
-    @IBOutlet weak var detailedTitleLabel: UILabel!
     @IBOutlet weak var detailedTimeLeftLabel: UILabel!
     @IBOutlet weak var detailedDaysLeftLabel: UILabel!
     @IBOutlet weak var detailedEditEventButton: UIButton!
@@ -30,7 +29,7 @@ class DetailedViewController: UIViewController {
     
     override func viewDidLoad() {
         if titleText != nil {
-            detailedTitleLabel.text = titleText
+            self.title = titleText
         }
 
         if image != nil {
@@ -61,7 +60,7 @@ class DetailedViewController: UIViewController {
 
     // Update all elements in the UI after editing an event
     func updateDetailedUI() {
-        detailedTitleLabel.text = self.UserEventsList![self.eventIndex!].title
+        self.title = self.UserEventsList![self.eventIndex!].title
         detailedImageView.image =  UIImage(data: self.UserEventsList![self.eventIndex!].image!)
         detailedTimeLeftLabel.text = String(daysLeft(date: self.UserEventsList![self.eventIndex!].date!))
     }
@@ -103,7 +102,7 @@ class DetailedViewController: UIViewController {
             viewController.isEditingEvent = true
 
             viewController.editingImage = detailedImageView.image
-            viewController.editingTitle = detailedTitleLabel.text
+            viewController.editingTitle = self.title
 
             if eventDate != nil {
                 viewController.editingDate = eventDate
