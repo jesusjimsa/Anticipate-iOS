@@ -32,6 +32,13 @@ class AddItemController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        // Hide keyboard when clicking intro key
+        eventNameText.delegate = self
+        eventNameText.tag = 1
+
+        initializeHideKeyboard()    // Hide keyboard when touching outside
+        setupToolbar()  // 'Done' button to hide keyboard
+
         datePicker.minimumDate = Date() // Current date
 
         if isEditingEvent {
@@ -83,11 +90,27 @@ class AddItemController: UIViewController {
             return false
         }
     }
-
-
     
     @IBAction func cancelButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+
+    func setupToolbar() {
+        // Create a toolbar
+        let bar = UIToolbar()
+
+        // Create a done button with an action to trigger our function to dismiss the keyboard
+        let doneBtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissMyKeyboard))
+
+        // Create a felxible space item so that we can add it around in toolbar to position our done button
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+        // Add the created button items in the toobar
+        bar.items = [flexSpace, flexSpace, doneBtn]
+        bar.sizeToFit()
+
+        // Add the toolbar to our textfield
+        eventNameText.inputAccessoryView = bar
     }
 
     @IBAction func selectImageAddElementAction(_ sender: Any) {
@@ -184,4 +207,36 @@ extension AddItemController: PHPickerViewControllerDelegate {
             }
         }
     }
+}
+
+extension AddItemController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Check if there is any other text-field in the view whose tag is +1 greater than the current text-field on
+        // which the return key was pressed. If yes → then move the cursor to that next text-field. If No → Dismiss the
+        // keyboard
+        if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        }
+        else {
+            textField.resignFirstResponder()
+        }
+        return false
+    }
+
+    func initializeHideKeyboard() {
+        // Declare a Tap Gesture Recognizer which will trigger our dismissMyKeyboard() function
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissMyKeyboard))
+        // Add this tap gesture recognizer to the parent view
+        view.addGestureRecognizer(tap)
+    }
+
+
+    @objc func dismissMyKeyboard() {
+        // endEditing causes the view (or one of its embedded text fields) to resign the first responder status.
+        // In short- Dismiss the active keyboard.
+        view.endEditing(true)
+    }
+
 }
