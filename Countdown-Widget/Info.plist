@@ -6,6 +6,7 @@
     <array>
         <string>twitter</string>
         <string>github</string>
+        <string>mastodon</string>
     </array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app lets you add an image to your countdowns</string>

@@ -119,23 +119,32 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsY-Ux-gMR">
-                                <rect key="frame" x="10" y="480" width="394" height="35"/>
+                                <rect key="frame" x="10" y="535" width="394" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="🤓 Source code for this app"/>
                                 <connections>
                                     <action selector="openRepoGithub:" destination="gir-wr-Neq" eventType="touchUpInside" id="lQu-6a-eBB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4f-ap-UIp">
+                                <rect key="frame" x="10" y="480" width="394" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="🐘 Mastodon"/>
+                                <connections>
+                                    <action selector="openMastodon:" destination="gir-wr-Neq" eventType="touchUpInside" id="Kgc-TW-aoC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y9W-8Y-TGL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bsY-Ux-gMR" firstAttribute="top" secondItem="hha-1y-6AO" secondAttribute="bottom" constant="20" id="0vc-pZ-OPy"/>
                             <constraint firstItem="bsY-Ux-gMR" firstAttribute="leading" secondItem="Y9W-8Y-TGL" secondAttribute="leading" constant="10" id="4bE-qj-OOe"/>
                             <constraint firstItem="Y9W-8Y-TGL" firstAttribute="trailing" secondItem="xlB-2r-E5f" secondAttribute="trailing" constant="10" id="7ZD-sW-kpH"/>
+                            <constraint firstItem="S4f-ap-UIp" firstAttribute="leading" secondItem="Y9W-8Y-TGL" secondAttribute="leading" constant="10" id="BUV-Sx-v6k"/>
                             <constraint firstItem="v0v-Xy-RjJ" firstAttribute="leading" secondItem="Y9W-8Y-TGL" secondAttribute="leading" constant="10" id="Cyb-X4-xhL"/>
                             <constraint firstItem="3FK-tc-H6Q" firstAttribute="top" secondItem="Y9W-8Y-TGL" secondAttribute="top" id="GDI-pl-CZZ"/>
                             <constraint firstItem="Y9W-8Y-TGL" firstAttribute="bottom" secondItem="v0v-Xy-RjJ" secondAttribute="bottom" constant="30" id="HUA-G3-GwA"/>
+                            <constraint firstItem="S4f-ap-UIp" firstAttribute="top" secondItem="hha-1y-6AO" secondAttribute="bottom" constant="20" id="KyS-df-ufp"/>
                             <constraint firstItem="Y9W-8Y-TGL" firstAttribute="trailing" secondItem="hha-1y-6AO" secondAttribute="trailing" constant="10" id="Rq9-U6-ylR"/>
                             <constraint firstItem="tiE-7n-QGp" firstAttribute="top" secondItem="xlB-2r-E5f" secondAttribute="bottom" constant="20" id="S0c-uw-ZAi"/>
                             <constraint firstItem="Y9W-8Y-TGL" firstAttribute="trailing" secondItem="7Ob-jp-nT7" secondAttribute="trailing" constant="10" id="Scn-Pg-Iva"/>
@@ -143,10 +152,12 @@
                             <constraint firstItem="xlB-2r-E5f" firstAttribute="leading" secondItem="Y9W-8Y-TGL" secondAttribute="leading" constant="10" id="axG-LR-mUg"/>
                             <constraint firstItem="xlB-2r-E5f" firstAttribute="top" secondItem="3FK-tc-H6Q" secondAttribute="bottom" constant="40" id="cRb-rd-lqP"/>
                             <constraint firstItem="Y9W-8Y-TGL" firstAttribute="trailing" secondItem="tiE-7n-QGp" secondAttribute="trailing" constant="10" id="doG-RY-yLA"/>
+                            <constraint firstItem="Y9W-8Y-TGL" firstAttribute="trailing" secondItem="S4f-ap-UIp" secondAttribute="trailing" constant="10" id="fHP-Ra-GbH"/>
                             <constraint firstItem="tiE-7n-QGp" firstAttribute="leading" secondItem="Y9W-8Y-TGL" secondAttribute="leading" constant="10" id="irM-2i-ayZ"/>
                             <constraint firstItem="7Ob-jp-nT7" firstAttribute="leading" secondItem="Y9W-8Y-TGL" secondAttribute="leading" constant="10" id="k0h-pN-ahW"/>
                             <constraint firstItem="3FK-tc-H6Q" firstAttribute="centerX" secondItem="vfh-3z-GEm" secondAttribute="centerX" id="ljB-ps-WFG"/>
                             <constraint firstItem="Y9W-8Y-TGL" firstAttribute="trailing" secondItem="v0v-Xy-RjJ" secondAttribute="trailing" constant="10" id="meY-8F-vBb"/>
+                            <constraint firstItem="bsY-Ux-gMR" firstAttribute="top" secondItem="S4f-ap-UIp" secondAttribute="bottom" constant="20" id="oFh-83-MLg"/>
                             <constraint firstItem="7Ob-jp-nT7" firstAttribute="top" secondItem="tiE-7n-QGp" secondAttribute="bottom" constant="20" id="pjd-Jj-vlQ"/>
                             <constraint firstItem="hha-1y-6AO" firstAttribute="top" secondItem="7Ob-jp-nT7" secondAttribute="bottom" constant="20" id="qgG-ro-FDZ"/>
                             <constraint firstItem="hha-1y-6AO" firstAttribute="leading" secondItem="Y9W-8Y-TGL" secondAttribute="leading" constant="10" id="v1t-Qn-z7A"/>
