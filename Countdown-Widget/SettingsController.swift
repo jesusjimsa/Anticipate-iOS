@@ -59,7 +59,12 @@ class SettingsController: UIViewController {
         UIApplication.shared.open(URL(string: "https://github.com/jesusjimsa/Countdown-Widget-iOS")!, options: [:],
                                   completionHandler: nil)
     }
-    
+
+    @IBAction func openMastodon(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://mastodon.world/@jesusjimsa")!, options: [:],
+                                  completionHandler: nil)
+    }
+
     @IBAction func setDarkMode(_ sender: Any) {
         let alertController = UIAlertController(title: "Select an Option", message: nil, preferredStyle: .actionSheet)
 
