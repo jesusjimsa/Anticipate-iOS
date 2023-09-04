@@ -154,6 +154,29 @@ extension ViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let areYouSureAlert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to delete this event?", preferredStyle: .alert)
+
+            areYouSureAlert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { action in
+                self.recuperarDatos()
+                self.context.delete(self.UserEventsList![indexPath.row])
+                try! self.context.save()
+                self.recuperarDatos()
+            }))
+
+            areYouSureAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+                // Nothing
+            }))
+
+            self.present(areYouSureAlert, animated: true, completion: nil)
+        }
+    }
 }
 
 extension ViewController: UINavigationBarDelegate {
