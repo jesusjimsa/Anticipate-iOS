@@ -36,6 +36,7 @@ class AddItemController: UIViewController {
         eventNameText.delegate = self
         eventNameText.tag = 1
 
+        // This has been disabled for now because it creates an problem where the date picker stops working.
         initializeHideKeyboard()    // Hide keyboard when touching outside
         setupToolbar()  // 'Done' button to hide keyboard
 
@@ -61,6 +62,22 @@ class AddItemController: UIViewController {
             }
         }
     }
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+        // Enable the tap gesture recognizer when the keyboard is shown
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        // Disable the tap gesture recognizer when the keyboard is hidden
+        view.gestureRecognizers?.forEach {
+            if let tapGesture = $0 as? UITapGestureRecognizer {
+                view.removeGestureRecognizer(tapGesture)
+            }
+        }
+    }
+
 
     func generateRandomID() -> String {
         let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -180,6 +197,28 @@ class AddItemController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    func initializeHideKeyboard() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissMyKeyboard))
+
+        // Initially, set the gesture recognizer as disabled
+        tapGesture.isEnabled = false
+
+        // Add the tap gesture to the view
+        view.addGestureRecognizer(tapGesture)
+
+        // Register for keyboard notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+
+    @objc func dismissMyKeyboard() {
+        // endEditing causes the view (or one of its embedded text fields) to resign the first responder status.
+        // In short- Dismiss the active keyboard.
+        view.endEditing(true)
+    }
 
 }
 
@@ -220,23 +259,7 @@ extension AddItemController: UITextFieldDelegate {
         else {
             textField.resignFirstResponder()
         }
+
         return false
     }
-
-    func initializeHideKeyboard() {
-        // Declare a Tap Gesture Recognizer which will trigger our dismissMyKeyboard() function
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(dismissMyKeyboard))
-        // Add this tap gesture recognizer to the parent view
-        view.addGestureRecognizer(tap)
-    }
-
-
-    @objc func dismissMyKeyboard() {
-        // endEditing causes the view (or one of its embedded text fields) to resign the first responder status.
-        // In short- Dismiss the active keyboard.
-        view.endEditing(true)
-    }
-
 }

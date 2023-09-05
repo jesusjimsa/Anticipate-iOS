@@ -75,7 +75,9 @@ class DetailedViewController: UIViewController {
     }
 
     @IBAction func deleteEvent(_ sender: Any) {
-        let areYouSureAlert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to delete this event?", preferredStyle: .alert)
+        let areYouSureAlert = UIAlertController(title: "Are you sure?",
+                                                message: "Are you sure you want to delete this event?",
+                                                preferredStyle: .alert)
 
         areYouSureAlert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { action in
             self.recuperarDatos()
