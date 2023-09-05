@@ -142,7 +142,8 @@ extension ViewController: UITableViewDelegate {
         let selectedEvent = UserEventsList![indexPath.row]
         let storyboard = UIStoryboard(name: "DetailedView", bundle: nil)
 
-        if let viewController = storyboard.instantiateViewController(identifier: "detailedView") as? DetailedViewController {
+        if let viewController = storyboard.instantiateViewController(identifier: "detailedView") as?
+            DetailedViewController {
 
             viewController.timeLeftText = String(daysLeft(date: selectedEvent.date!))
             viewController.titleText = selectedEvent.title!
@@ -159,9 +160,12 @@ extension ViewController: UITableViewDelegate {
         return true
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            let areYouSureAlert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to delete this event?", preferredStyle: .alert)
+            let areYouSureAlert = UIAlertController(title: "Are you sure?",
+                                                    message: "Are you sure you want to delete this event?",
+                                                    preferredStyle: .alert)
 
             areYouSureAlert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { action in
                 self.recuperarDatos()
