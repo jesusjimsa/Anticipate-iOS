@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import StoreKit
 
 class SettingsController: UIViewController {
     @IBOutlet weak var appIcon: UIImageView!
+    private var myProduct: Product?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +110,10 @@ class SettingsController: UIViewController {
                 }
             }
         }
+    }
+
+    @IBAction func tipJarButtonAction(_ sender: Any) {
+        
     }
 }
 

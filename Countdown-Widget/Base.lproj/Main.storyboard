@@ -84,6 +84,9 @@
                                 <rect key="frame" x="10" y="797" width="394" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="💰 Tip Jar"/>
+                                <connections>
+                                    <action selector="tipJarButtonAction:" destination="gir-wr-Neq" eventType="touchUpInside" id="U6z-h5-5mT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlB-2r-E5f">
                                 <rect key="frame" x="10" y="260" width="394" height="35"/>

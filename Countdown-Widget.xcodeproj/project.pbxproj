@@ -22,6 +22,7 @@
 		8819B2022A66E035006B0433 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8819B2012A66E035006B0433 /* SettingsController.swift */; };
 		88289C112A01995A001CD878 /* UserCountdowns+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88289C0F2A01995A001CD878 /* UserCountdowns+CoreDataClass.swift */; };
 		88289C122A01995A001CD878 /* UserCountdowns+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88289C102A01995A001CD878 /* UserCountdowns+CoreDataProperties.swift */; };
+		88670D702AA7A1C300F0F711 /* tip_jar.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 88670D6F2AA7A1C300F0F711 /* tip_jar.storekit */; };
 		889EEAB829F8519700D284C0 /* AddItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889EEAB729F8519700D284C0 /* AddItem.storyboard */; };
 		889EEABA29F853D200D284C0 /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889EEAB929F853D200D284C0 /* AddItemController.swift */; };
 		889EEABD29F863D500D284C0 /* EventsList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 889EEABB29F863D400D284C0 /* EventsList.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 		8819B2012A66E035006B0433 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		88289C0F2A01995A001CD878 /* UserCountdowns+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCountdowns+CoreDataClass.swift"; sourceTree = "<group>"; };
 		88289C102A01995A001CD878 /* UserCountdowns+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCountdowns+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88670D6F2AA7A1C300F0F711 /* tip_jar.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = tip_jar.storekit; sourceTree = "<group>"; };
 		889EEAB729F8519700D284C0 /* AddItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddItem.storyboard; sourceTree = "<group>"; };
 		889EEAB929F853D200D284C0 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
 		889EEABC29F863D500D284C0 /* EventsList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventsList.xcdatamodel; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				8810A7C62A82BCC60021AB4A /* iconCellView.xib */,
 				8810A7C92A8C000E0021AB4A /* IconsController.swift */,
 				8810A7CB2A9543290021AB4A /* iconsEnum.swift */,
+				88670D6F2AA7A1C300F0F711 /* tip_jar.storekit */,
 			);
 			path = "Countdown-Widget";
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				8810A7C82A82BCC60021AB4A /* iconCellView.xib in Resources */,
 				880B64F829DCA559007ACEF4 /* LaunchScreen.storyboard in Resources */,
 				880B64F529DCA559007ACEF4 /* Assets.xcassets in Resources */,
+				88670D702AA7A1C300F0F711 /* tip_jar.storekit in Resources */,
 				880B650229DCADA0007ACEF4 /* customCell.xib in Resources */,
 				880B64F329DCA555007ACEF4 /* Main.storyboard in Resources */,
 				88E98F642A1D4F2200681113 /* DetailedView.storyboard in Resources */,
