@@ -14,26 +14,31 @@ struct DetailedView: View {
                 Image("link_img")
                     .resizable()
                     .scaledToFill()
-                    .frame(height: 300)
+                    .frame(height: 350)
 
                 VStack {
                     Text("57")
-                        .font(.largeTitle)
+                        .font(.system(size: 100))
                         .padding(.top)
                     Text("Days Left")
+                        .padding(.bottom)
                 }
 
                 VStack {
                     Button(action: {}, label: {
                         Text("Edit Event")
+                            .frame(maxWidth: .infinity)
                     })
                     .buttonStyle(.bordered)
+                    .padding(.horizontal)
 
                     Button(action: {}, label: {
                         Text("Delete Event")
                             .foregroundStyle(.red)
+                            .frame(maxWidth: .infinity)
                     })
                     .buttonStyle(.bordered)
+                    .padding(.horizontal)
                 }
             }
             .navigationTitle("Event title (to be changed)")
