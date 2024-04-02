@@ -34,10 +34,11 @@ struct ContentView: View {
                             Text(item.title)
                                 .font(.title)
                             Text("\(item.value)")
-                                .font(.largeTitle)
-                                .padding(.vertical, 5)
+                                .font(.system(size: 50))
+                                .padding(.vertical, 0.5)
                             Text("Days Left")
                         }
+                        .padding(.horizontal, 8)
                     }
                     .padding(.vertical, 10)
                 }

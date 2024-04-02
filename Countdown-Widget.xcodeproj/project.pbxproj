@@ -26,6 +26,12 @@
 		889EEABA29F853D200D284C0 /* AddItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889EEAB929F853D200D284C0 /* AddItemController.swift */; };
 		889EEABD29F863D500D284C0 /* EventsList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 889EEABB29F863D400D284C0 /* EventsList.xcdatamodeld */; };
 		88C234362A54A50E001CFB2A /* DaysLeftCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C234352A54A50E001CFB2A /* DaysLeftCalculator.swift */; };
+		88C46E232BA0F379007A00DC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C46E222BA0F379007A00DC /* MainView.swift */; };
+		88C46E252BA0F38D007A00DC /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C46E242BA0F38D007A00DC /* EventsList.swift */; };
+		88C46E282BA0F742007A00DC /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C46E272BA0F742007A00DC /* AddItemView.swift */; };
+		88C46E2A2BA35CF2007A00DC /* DetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C46E292BA35CF2007A00DC /* DetailedView.swift */; };
+		88C46E2C2BBC8C4F007A00DC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C46E2B2BBC8C4F007A00DC /* SettingsView.swift */; };
+		88C46E2E2BBC9693007A00DC /* IconsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C46E2D2BBC9693007A00DC /* IconsListView.swift */; };
 		88E98F642A1D4F2200681113 /* DetailedView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E98F632A1D4F2200681113 /* DetailedView.storyboard */; };
 		88E98F682A2675C900681113 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E98F672A2675C900681113 /* DetailedViewController.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +58,12 @@
 		889EEAB929F853D200D284C0 /* AddItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemController.swift; sourceTree = "<group>"; };
 		889EEABC29F863D500D284C0 /* EventsList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventsList.xcdatamodel; sourceTree = "<group>"; };
 		88C234352A54A50E001CFB2A /* DaysLeftCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysLeftCalculator.swift; sourceTree = "<group>"; };
+		88C46E222BA0F379007A00DC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		88C46E242BA0F38D007A00DC /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
+		88C46E272BA0F742007A00DC /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		88C46E292BA35CF2007A00DC /* DetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedView.swift; sourceTree = "<group>"; };
+		88C46E2B2BBC8C4F007A00DC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		88C46E2D2BBC9693007A00DC /* IconsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsListView.swift; sourceTree = "<group>"; };
 		88E98F632A1D4F2200681113 /* DetailedView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedView.storyboard; sourceTree = "<group>"; };
 		88E98F672A2675C900681113 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +98,7 @@
 		880B64EA29DCA555007ACEF4 /* Countdown-Widget */ = {
 			isa = PBXGroup;
 			children = (
+				88C46E262BA0F390007A00DC /* SwiftData */,
 				88289C022A0196A9001CD878 /* CoreData */,
 				880B64EB29DCA555007ACEF4 /* AppDelegate.swift */,
 				880B64ED29DCA555007ACEF4 /* SceneDelegate.swift */,
@@ -107,6 +120,11 @@
 				8810A7C62A82BCC60021AB4A /* iconCellView.xib */,
 				8810A7C92A8C000E0021AB4A /* IconsController.swift */,
 				8810A7CB2A9543290021AB4A /* iconsEnum.swift */,
+				88C46E222BA0F379007A00DC /* MainView.swift */,
+				88C46E272BA0F742007A00DC /* AddItemView.swift */,
+				88C46E292BA35CF2007A00DC /* DetailedView.swift */,
+				88C46E2B2BBC8C4F007A00DC /* SettingsView.swift */,
+				88C46E2D2BBC9693007A00DC /* IconsListView.swift */,
 			);
 			path = "Countdown-Widget";
 			sourceTree = "<group>";
@@ -118,6 +136,14 @@
 				88289C102A01995A001CD878 /* UserCountdowns+CoreDataProperties.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		88C46E262BA0F390007A00DC /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				88C46E242BA0F38D007A00DC /* EventsList.swift */,
+			);
+			path = SwiftData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C46E282BA0F742007A00DC /* AddItemView.swift in Sources */,
 				889EEABA29F853D200D284C0 /* AddItemController.swift in Sources */,
 				8810A7C72A82BCC60021AB4A /* iconCellView.swift in Sources */,
 				880B64F029DCA555007ACEF4 /* ViewController.swift in Sources */,
@@ -203,12 +230,17 @@
 				88289C112A01995A001CD878 /* UserCountdowns+CoreDataClass.swift in Sources */,
 				8819B2022A66E035006B0433 /* SettingsController.swift in Sources */,
 				8810A7CC2A9543290021AB4A /* iconsEnum.swift in Sources */,
+				88C46E2E2BBC9693007A00DC /* IconsListView.swift in Sources */,
 				88E98F682A2675C900681113 /* DetailedViewController.swift in Sources */,
+				88C46E2A2BA35CF2007A00DC /* DetailedView.swift in Sources */,
 				880B64EC29DCA555007ACEF4 /* AppDelegate.swift in Sources */,
 				88C234362A54A50E001CFB2A /* DaysLeftCalculator.swift in Sources */,
 				880B650129DCADA0007ACEF4 /* customCell.swift in Sources */,
+				88C46E252BA0F38D007A00DC /* EventsList.swift in Sources */,
 				880B64EE29DCA555007ACEF4 /* SceneDelegate.swift in Sources */,
+				88C46E232BA0F379007A00DC /* MainView.swift in Sources */,
 				8810A7CA2A8C000E0021AB4A /* IconsController.swift in Sources */,
+				88C46E2C2BBC8C4F007A00DC /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +395,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -395,7 +427,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
