@@ -2,7 +2,7 @@
 //  AddItemView.swift
 //  Countdown-Widget
 //
-//  Created by Jesús Jiménez Sánchez on 12/3/24.
+//  Created by Jesús Jiménez Sánchez on 7/5/24.
 //
 
 import SwiftUI
@@ -95,3 +95,4 @@ struct AddItemView: View {
 #Preview {
     AddItemView()
 }
+

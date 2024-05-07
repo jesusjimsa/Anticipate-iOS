@@ -2,7 +2,7 @@
 //  DetailedView.swift
 //  Countdown-Widget
 //
-//  Created by Jesús Jiménez Sánchez on 14/3/24.
+//  Created by Jesús Jiménez Sánchez on 7/5/24.
 //
 
 import SwiftUI
@@ -14,11 +14,12 @@ struct DetailedView: View {
                 Image("link_img")
                     .resizable()
                     .scaledToFill()
-                    .frame(height: 350)
+                    .frame(height: 300)
 
                 VStack {
                     Text("57")
                         .font(.system(size: 100))
+                        .padding(.top)
                         .padding(.top)
                     Text("Days Left")
                         .padding(.bottom)
@@ -49,3 +50,4 @@ struct DetailedView: View {
 #Preview {
     DetailedView()
 }
+
