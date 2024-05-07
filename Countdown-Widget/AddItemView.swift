@@ -7,6 +7,38 @@
 
 import SwiftUI
 import PhotosUI
+import SwiftData
+
+func generateRandomID() -> String {
+    let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    let length = 6
+    var randomString = ""
+
+    for _ in 0..<length {
+        let randomIndex = Int.random(in: 0..<characters.count)
+        let character = characters[characters.index(characters.startIndex, offsetBy: randomIndex)]
+
+        randomString.append(character)
+    }
+
+    return randomString
+}
+
+func isIDAlreadyPresent(id: String) -> Bool {
+//    let fetchRequest: NSFetchRequest<UserCountdowns> = UserCountdowns.fetchRequest()
+//    fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+//    fetchRequest.fetchLimit = 1 // Optimize performance by limiting the fetch to 1 result
+//
+//    do {
+//        let count = try context.count(for: fetchRequest)
+//        return count > 0
+//    } catch {
+//        print("Error checking ID existence: \(error)")
+//        return false
+//    }
+
+    return false
+}
 
 struct AddItemView: View {
     @State private var event_name: String = ""
@@ -25,7 +57,6 @@ struct AddItemView: View {
                     Spacer(minLength: 10)
                     TextField("Add a title to your countdown", text: $event_name)
                         .border(.tertiary)
-                        .frame(width: .infinity)
                         .textFieldStyle(.roundedBorder)
                     Spacer(minLength: 10)
                 }
@@ -46,11 +77,11 @@ struct AddItemView: View {
             }
             .navigationTitle("New Event")
             .navigationBarItems(
-                leading: Button(action: {
-                                    // Add your button action here
-                                }) {
-                                    Text("Cancel")
-                                },
+//                leading: Button(action: {
+//                                    // Add your button action here
+//                                }) {
+//                                    Text("Cancel")
+//                                },
                 trailing: Button(action: {
                             // Add your button action here
                         }) {

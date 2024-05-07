@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct IconsListView: View {
     var body: some View {

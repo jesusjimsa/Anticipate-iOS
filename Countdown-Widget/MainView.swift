@@ -73,22 +73,29 @@ struct MainView: View {
         NavigationStack {
             List {
                 ForEach(items) { item in
-                    HStack {
-                        Image(item.imageName)
-                            .resizable()
-                            .frame(width: 128, height: 128)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                        VStack(alignment: .leading) {
-                            Text(item.title)
-                                .font(.title)
-                            Text("\(item.value)")
-                                .font(.system(size: 50))
-                                .padding(.vertical, 0.5)
-                            Text("Days Left")
+                    NavigationLink(destination: DetailedView(
+                        titleText: item.title,
+                        image: UIImage(named: item.imageName),
+                        eventDate: Date(),
+                        eventID: "1"
+                    )) {
+                        HStack {
+                            Image(item.imageName)
+                                .resizable()
+                                .frame(width: 128, height: 128)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            VStack(alignment: .leading) {
+                                Text(item.title)
+                                    .font(.title)
+                                Text("\(item.value)")
+                                    .font(.system(size: 50))
+                                    .padding(.vertical, 0.5)
+                                Text("Days Left")
+                            }
+                            .padding(.horizontal, 8)
                         }
-                        .padding(.horizontal, 8)
+                        .padding(.vertical, 10)
                     }
-                    .padding(.vertical, 10)
                 }
             }
             .navigationTitle("Events")

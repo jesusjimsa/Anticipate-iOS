@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SettingsView: View {
     let email = "jesusjimsa@icloud.com"
@@ -33,7 +34,9 @@ struct SettingsView: View {
                     // }
 
                         Text("🌓 Theme")
+                    NavigationLink(destination: IconsListView()) {
                         Text("📱 App icon")
+                    }
                 }
                 Section(header: Text("About")) {
                     Link(destination: URL(string: "mailto:\(email)")!, label: {
