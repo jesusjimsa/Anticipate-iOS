@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		88E420282BEAAA060064B747 /* Countdown_WidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420272BEAAA060064B747 /* Countdown_WidgetApp.swift */; };
 		88E4202A2BEAAA060064B747 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420292BEAAA060064B747 /* MainView.swift */; };
-		88E4202C2BEAAA060064B747 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4202B2BEAAA060064B747 /* EventsList.swift */; };
+		88E4202C2BEAAA060064B747 /* CountdownEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4202B2BEAAA060064B747 /* CountdownEvent.swift */; };
 		88E4202E2BEAAA0A0064B747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E4202D2BEAAA0A0064B747 /* Assets.xcassets */; };
 		88E420312BEAAA0A0064B747 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E420302BEAAA0A0064B747 /* Preview Assets.xcassets */; };
 		88E420382BEAAAB70064B747 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420372BEAAAB70064B747 /* SettingsView.swift */; };
@@ -23,7 +23,7 @@
 		88E420242BEAAA060064B747 /* Countdown-Widget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Countdown-Widget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E420272BEAAA060064B747 /* Countdown_WidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown_WidgetApp.swift; sourceTree = "<group>"; };
 		88E420292BEAAA060064B747 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		88E4202B2BEAAA060064B747 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
+		88E4202B2BEAAA060064B747 /* CountdownEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownEvent.swift; sourceTree = "<group>"; };
 		88E4202D2BEAAA0A0064B747 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88E420302BEAAA0A0064B747 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		88E420372BEAAAB70064B747 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		88E4203F2BEAAD040064B747 /* SwiftData */ = {
 			isa = PBXGroup;
 			children = (
-				88E4202B2BEAAA060064B747 /* EventsList.swift */,
+				88E4202B2BEAAA060064B747 /* CountdownEvent.swift */,
 			);
 			path = SwiftData;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 				88E4202A2BEAAA060064B747 /* MainView.swift in Sources */,
 				88E420412BEAAD700064B747 /* DaysLeftCalculator.swift in Sources */,
 				88E420382BEAAAB70064B747 /* SettingsView.swift in Sources */,
-				88E4202C2BEAAA060064B747 /* EventsList.swift in Sources */,
+				88E4202C2BEAAA060064B747 /* CountdownEvent.swift in Sources */,
 				88E420282BEAAA060064B747 /* Countdown_WidgetApp.swift in Sources */,
 				88E4203C2BEAAC320064B747 /* DetailedView.swift in Sources */,
 				88E4203A2BEAABFA0064B747 /* AddItemView.swift in Sources */,

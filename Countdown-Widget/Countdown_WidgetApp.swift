@@ -12,7 +12,7 @@ import SwiftData
 struct Countdown_WidgetApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            EventsList.self,
+            CountdownEvent.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

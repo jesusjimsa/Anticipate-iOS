@@ -2,49 +2,39 @@
 //  AddItemView.swift
 //  Countdown-Widget
 //
-//  Created by Jesús Jiménez Sánchez on 7/5/24.
+//  Created by Jesús Jiménez Sánchez on 12/3/24.
 //
 
 import SwiftUI
 import PhotosUI
-import SwiftData
 
-func generateRandomID() -> String {
-    let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    let length = 6
-    var randomString = ""
-
-    for _ in 0..<length {
-        let randomIndex = Int.random(in: 0..<characters.count)
-        let character = characters[characters.index(characters.startIndex, offsetBy: randomIndex)]
-
-        randomString.append(character)
-    }
-
-    return randomString
+struct ImageAlertDetails {
+    let title = "Alert"
+    let message = "You have not added an image"
 }
 
-func isIDAlreadyPresent(id: String) -> Bool {
-//    let fetchRequest: NSFetchRequest<UserCountdowns> = UserCountdowns.fetchRequest()
-//    fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-//    fetchRequest.fetchLimit = 1 // Optimize performance by limiting the fetch to 1 result
-//
-//    do {
-//        let count = try context.count(for: fetchRequest)
-//        return count > 0
-//    } catch {
-//        print("Error checking ID existence: \(error)")
-//        return false
-//    }
-
-    return false
+struct TitleAlertDetails {
+    let title = "Alert"
+    let message = "You have not added a title"
 }
 
 struct AddItemView: View {
+    let countdown: CountdownEvent?
+    
     @State private var event_name: String = ""
     @State private var date = Date()
     @State private var eventPPicker: PhotosPickerItem?
     @State private var eventImage: Image?
+    @State private var eventImageData: Data?
+    @State private var event_id: UUID?
+
+    @State private var showImageAlert = false
+    @State private var showTitleAlert = false
+    @State private var imageAlertDetails = ImageAlertDetails()
+    @State private var titleAlertDetails = TitleAlertDetails()
+
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
 
     var body: some View {
         NavigationStack {
@@ -83,11 +73,39 @@ struct AddItemView: View {
 //                                    Text("Cancel")
 //                                },
                 trailing: Button(action: {
-                            // Add your button action here
-                        }) {
-                            // Image(systemName: "plus")
-                            Text("Save")
-                        })
+                    showTitleAlert = event_name.isEmpty
+                    showImageAlert = eventImage == nil
+
+                    if !showImageAlert && !showTitleAlert {
+                        save()
+                        dismiss()
+                    }
+                }) {
+                    // Image(systemName: "plus")
+                    Text("Save")
+                })
+            .alert(
+                imageAlertDetails.title,
+                isPresented: $showImageAlert,
+                presenting: imageAlertDetails
+            ) { imageAlertDetails in
+                Button("OK") {
+                    // Nothing
+                }
+            } message: { imageAlertDetails in
+                Text(imageAlertDetails.message)
+            }
+            .alert(
+                titleAlertDetails.title,
+                isPresented: $showTitleAlert,
+                presenting: titleAlertDetails
+            ) { titleAlertDetails in
+                Button("OK") {
+                    // Nothing
+                }
+            } message: { titleAlertDetails in
+                Text(titleAlertDetails.message)
+            }
 
             HStack(spacing: 15) {
                 // Fixed size image container on the left
@@ -114,6 +132,7 @@ struct AddItemView: View {
                         Task {
                             if let loaded = try? await eventPPicker?.loadTransferable(type: Image.self) {
                                 eventImage = loaded
+                                ImgToData()
                             } else {
                                 print("Failed")
                             }
@@ -121,9 +140,32 @@ struct AddItemView: View {
                     }
         }
     }
+
+    private func save() {
+        if let countdown {
+            countdown.title = event_name
+            countdown.date = date
+            countdown.image = eventImageData!
+        }
+        else {
+            let newCountdown = CountdownEvent(id: UUID(), title: event_name, date: date, image: eventImageData!)
+            modelContext.insert(newCountdown)
+        }
+    }
+
+    private func ImgToData() {
+        Task { @MainActor in
+            if let imageData = try await eventPPicker?.loadTransferable(type: Data.self) {
+                eventImageData = imageData
+            }
+            else {
+                // Handle error (e.g., print message, show alert)
+                print("Error loading image data")
+            }
+        }
+    }
 }
 
 #Preview {
-    AddItemView()
+    AddItemView(countdown: nil)
 }
-

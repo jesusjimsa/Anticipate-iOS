@@ -2,53 +2,51 @@
 //  DetailedView.swift
 //  Countdown-Widget
 //
-//  Created by Jesús Jiménez Sánchez on 7/5/24.
+//  Created by Jesús Jiménez Sánchez on 14/3/24.
 //
 
 import SwiftUI
 import SwiftData
 
 struct DetailedView: View {
-    var titleText: String?
-    var timeLeftText: String?
-    var daysLeftText: String?
-    var image: UIImage?
-    var eventIndex: Int?
-    var eventDate: Date?
-    var eventID: String?
+//    var eventIndex: Int?
+
+    var countdown: CountdownEvent?
 
     var body: some View {
         NavigationStack {
             VStack {
-                if image != nil {
-                    Image(uiImage: image!)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 300)
-                }
-                else {
-                    Image("link_img")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 300)
-                }
+                createImage(countdown!.image)
+                    .resizable()
+//                    .scaledToFill()
+                    .aspectRatio(contentMode: .fit)
+//                    .frame(height: 300)
+                    .clipped()
+                    .frame(width: UIScreen.main.bounds.width, height: 300)
 
                 VStack {
-                    let left = daysLeft(date: eventDate ?? Date())
+                    let daysLeft: Int = daysLeft(date: countdown!.date)
 
-                    Text(left >= 0 ? String(left) : "0")
+                    Text("\(daysLeft < 0 ? 0 : daysLeft)")
                         .font(.system(size: 100))
                         .padding(.top)
                         .padding(.top)
-                    Text(left > 1 ? "Days Left" : "Day Left")
-                        .padding(.bottom)
+
+                    if daysLeft == 1 {
+                        Text("Day Left")
+                            .padding(.bottom)
+                    }
+                    else {
+                        Text("Days Left")
+                            .padding(.bottom)
+                    }
                 }
 
                 VStack {
-                    NavigationLink(destination: AddItemView()) {
+                    Button(action: {}, label: {
                         Text("Edit Event")
                             .frame(maxWidth: .infinity)
-                    }
+                    })
                     .buttonStyle(.bordered)
                     .padding(.horizontal)
 
@@ -61,7 +59,7 @@ struct DetailedView: View {
                     .padding(.horizontal)
                 }
             }
-            .navigationTitle(titleText ?? "Event Name")
+            .navigationTitle("\(countdown!.title)")
         }
     }
 }
@@ -69,4 +67,3 @@ struct DetailedView: View {
 #Preview {
     DetailedView()
 }
-

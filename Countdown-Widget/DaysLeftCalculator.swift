@@ -1,8 +1,8 @@
 //
-//  DaysLeftCalculator.swift
+//  DaysLeft.swift
 //  Countdown-Widget
 //
-//  Created by Jesús Jiménez Sánchez on 7/5/24.
+//  Created by Jesús Jiménez Sánchez on 4/7/23.
 //
 
 import Foundation
@@ -14,3 +14,4 @@ func daysBetween(start: Date, end: Date) -> Int {
 func daysLeft(date: Date) -> Int {
     return daysBetween(start: Date(), end: date)
 }
+

@@ -2,11 +2,10 @@
 //  SettingsView.swift
 //  Countdown-Widget
 //
-//  Created by Jesús Jiménez Sánchez on 7/5/24.
+//  Created by Jesús Jiménez Sánchez on 2/4/24.
 //
 
 import SwiftUI
-import SwiftData
 
 struct SettingsView: View {
     let email = "jesusjimsa@icloud.com"
@@ -34,9 +33,7 @@ struct SettingsView: View {
                     // }
 
                         Text("🌓 Theme")
-                    NavigationLink(destination: IconsListView()) {
                         Text("📱 App icon")
-                    }
                 }
                 Section(header: Text("About")) {
                     Link(destination: URL(string: "mailto:\(email)")!, label: {

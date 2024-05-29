@@ -2,11 +2,10 @@
 //  IconsListView.swift
 //  Countdown-Widget
 //
-//  Created by Jesús Jiménez Sánchez on 7/5/24.
+//  Created by Jesús Jiménez Sánchez on 2/4/24.
 //
 
 import SwiftUI
-import SwiftData
 
 struct IconsListView: View {
     var body: some View {
