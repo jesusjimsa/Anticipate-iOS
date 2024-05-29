@@ -33,6 +33,8 @@ struct AddItemView: View {
     @State private var imageAlertDetails = ImageAlertDetails()
     @State private var titleAlertDetails = TitleAlertDetails()
 
+    @State private var isEditing: Bool = false
+
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
 
@@ -48,6 +50,9 @@ struct AddItemView: View {
                     TextField("Add a title to your countdown", text: $event_name)
                         .border(.tertiary)
                         .textFieldStyle(.roundedBorder)
+                        .onTapGesture {
+                            self.isEditing = true
+                        }
                     Spacer(minLength: 10)
                 }
 
@@ -84,6 +89,16 @@ struct AddItemView: View {
                     // Image(systemName: "plus")
                     Text("Save")
                 })
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                self.isEditing = false
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                self.isEditing = true
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                self.isEditing = false
+            }
             .alert(
                 imageAlertDetails.title,
                 isPresented: $showImageAlert,
