@@ -8,10 +8,22 @@
 import SwiftUI
 import SwiftData
 
+struct DeleteItemAlertDetails {
+    let title = "Are you sure?"
+    let message = "Are you sure you want to delete this event?"
+}
+
 struct DetailedView: View {
 //    var eventIndex: Int?
 
     var countdown: CountdownEvent?
+
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.presentationMode) var presentationMode
+
+    @State private var deleteItemAlertDetails = DeleteItemAlertDetails()
+
+    @State private var isDeleting = false
 
     var body: some View {
         NavigationStack {
@@ -50,17 +62,36 @@ struct DetailedView: View {
                     .buttonStyle(.bordered)
                     .padding(.horizontal)
 
-                    Button(action: {}, label: {
+                    Button { isDeleting = true } label: {
                         Text("Delete Event")
                             .foregroundStyle(.red)
                             .frame(maxWidth: .infinity)
-                    })
+                    }
                     .buttonStyle(.bordered)
                     .padding(.horizontal)
+                }
+                .alert(
+                    deleteItemAlertDetails.title,
+                    isPresented: $isDeleting,
+                    presenting: deleteItemAlertDetails
+                ) { titleAlertDetails in
+                    Button("Yes", role: .destructive) {
+                        delete(countdown!)
+                    }
+                    Button("Cancel", role: .cancel) {
+                        isDeleting = false
+                    }
+                } message: { deleteItemAlertDetails in
+                    Text(deleteItemAlertDetails.message)
                 }
             }
             .navigationTitle("\(countdown!.title)")
         }
+    }
+
+    private func delete(_ event: CountdownEvent) {
+        modelContext.delete(event)
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 
