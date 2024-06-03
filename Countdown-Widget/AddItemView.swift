@@ -162,7 +162,9 @@ struct AddItemView: View {
         if let countdown {
             countdown.title = event_name
             countdown.date = date
-            countdown.image = eventImageData!
+            if let eventImageData {
+                countdown.image = eventImageData
+            }
         }
         else {
             let newCountdown = CountdownEvent(id: UUID(), title: event_name, date: date, image: eventImageData!)

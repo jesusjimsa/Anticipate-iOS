@@ -59,6 +59,7 @@ struct MainView: View {
                     }
                     .padding(.vertical, 10)
                 }
+                .onDelete(perform: removeEvent)
             }
             .navigationTitle("Events")
             .navigationBarItems(
@@ -68,6 +69,14 @@ struct MainView: View {
                 trailing: NavigationLink(destination: AddItemView(countdown: nil)) {
                     Text("Add")
                 })
+        }
+    }
+
+    private func removeEvent(at indexSet: IndexSet) {
+        for index in indexSet {
+            let event = countdowns[index]
+
+            modelContext.delete(event)
         }
     }
 }
