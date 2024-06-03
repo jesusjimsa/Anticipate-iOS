@@ -19,7 +19,7 @@ struct DetailedView: View {
     var countdown: CountdownEvent?
 
     @Environment(\.modelContext) private var modelContext
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
 
     @State private var deleteItemAlertDetails = DeleteItemAlertDetails()
 
@@ -55,7 +55,11 @@ struct DetailedView: View {
                 }
 
                 VStack {
-                    Button(action: {}, label: {
+//                    Button(action: {}, label: {
+//                        Text("Edit Event")
+//                            .frame(maxWidth: .infinity)
+//                    })
+                    NavigationLink(destination: AddItemView(countdown: countdown), label: {
                         Text("Edit Event")
                             .frame(maxWidth: .infinity)
                     })
@@ -91,7 +95,7 @@ struct DetailedView: View {
 
     private func delete(_ event: CountdownEvent) {
         modelContext.delete(event)
-        self.presentationMode.wrappedValue.dismiss()
+        dismiss()
     }
 }
 

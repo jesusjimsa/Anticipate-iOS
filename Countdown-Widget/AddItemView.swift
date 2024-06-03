@@ -20,7 +20,7 @@ struct TitleAlertDetails {
 
 struct AddItemView: View {
     let countdown: CountdownEvent?
-    
+
     @State private var event_name: String = ""
     @State private var date = Date()
     @State private var eventPPicker: PhotosPickerItem?
@@ -72,11 +72,6 @@ struct AddItemView: View {
             }
             .navigationTitle("New Event")
             .navigationBarItems(
-//                leading: Button(action: {
-//                                    // Add your button action here
-//                                }) {
-//                                    Text("Cancel")
-//                                },
                 trailing: Button(action: {
                     showTitleAlert = event_name.isEmpty
                     showImageAlert = eventImage == nil
@@ -125,7 +120,7 @@ struct AddItemView: View {
             HStack(spacing: 15) {
                 // Fixed size image container on the left
                 ZStack(alignment: .topLeading) {
-                    if let eventImage = eventImage {
+                    if let eventImage {
                         eventImage
                             .resizable()
                             .scaledToFill()
@@ -153,6 +148,13 @@ struct AddItemView: View {
                             }
                         }
                     }
+        }
+        .onAppear {
+            if let countdown = countdown {
+                event_name = countdown.title
+                date = countdown.date
+                eventImage = createImage(countdown.image)
+            }
         }
     }
 
