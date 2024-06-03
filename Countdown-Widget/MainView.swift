@@ -72,18 +72,6 @@ struct MainView: View {
     }
 }
 
-func createImage(_ value: Data) -> Image {
-#if canImport(UIKit)
-    let event_image: UIImage = UIImage(data: value) ?? UIImage()
-    return Image(uiImage: event_image)
-#elseif canImport(AppKit)
-    let event_image: NSImage = NSImage(data: value) ?? NSImage()
-    return Image(nsImage: event_image)
-#else
-    return Image(systemImage: "some_default")
-#endif
-}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()

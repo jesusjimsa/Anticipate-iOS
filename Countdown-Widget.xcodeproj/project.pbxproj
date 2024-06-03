@@ -16,7 +16,7 @@
 		88E4203A2BEAABFA0064B747 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420392BEAABFA0064B747 /* AddItemView.swift */; };
 		88E4203C2BEAAC320064B747 /* DetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4203B2BEAAC320064B747 /* DetailedView.swift */; };
 		88E4203E2BEAAC530064B747 /* IconsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4203D2BEAAC530064B747 /* IconsListView.swift */; };
-		88E420412BEAAD700064B747 /* DaysLeftCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420402BEAAD700064B747 /* DaysLeftCalculator.swift */; };
+		88E420412BEAAD700064B747 /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420402BEAAD700064B747 /* ExtraFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 		88E420392BEAABFA0064B747 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		88E4203B2BEAAC320064B747 /* DetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedView.swift; sourceTree = "<group>"; };
 		88E4203D2BEAAC530064B747 /* IconsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsListView.swift; sourceTree = "<group>"; };
-		88E420402BEAAD700064B747 /* DaysLeftCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysLeftCalculator.swift; sourceTree = "<group>"; };
+		88E420402BEAAD700064B747 /* ExtraFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 				88E420392BEAABFA0064B747 /* AddItemView.swift */,
 				88E4202D2BEAAA0A0064B747 /* Assets.xcassets */,
 				88E4202F2BEAAA0A0064B747 /* Preview Content */,
-				88E420402BEAAD700064B747 /* DaysLeftCalculator.swift */,
+				88E420402BEAAD700064B747 /* ExtraFunctions.swift */,
 			);
 			path = "Countdown-Widget";
 			sourceTree = "<group>";
@@ -164,7 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88E4202A2BEAAA060064B747 /* MainView.swift in Sources */,
-				88E420412BEAAD700064B747 /* DaysLeftCalculator.swift in Sources */,
+				88E420412BEAAD700064B747 /* ExtraFunctions.swift in Sources */,
 				88E420382BEAAAB70064B747 /* SettingsView.swift in Sources */,
 				88E4202C2BEAAA060064B747 /* CountdownEvent.swift in Sources */,
 				88E420282BEAAA060064B747 /* Countdown_WidgetApp.swift in Sources */,
