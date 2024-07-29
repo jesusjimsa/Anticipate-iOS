@@ -67,6 +67,9 @@ struct AddItemView: View {
                         displayedComponents: [.date]
                     )
                     .datePickerStyle(.graphical)
+                    .onTapGesture(count: 99, perform: {
+                        // Override iOS bug
+                    })
 
 
             }
