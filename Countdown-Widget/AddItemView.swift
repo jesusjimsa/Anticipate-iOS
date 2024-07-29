@@ -40,27 +40,28 @@ struct AddItemView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
-                Text("Add a title to your event")
-                    .font(.title3)
-                    .padding(.leading)
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Text("Add a title to your event")
+                        .font(.title3)
+                        .padding(.leading)
 
-                HStack {
-                    Spacer(minLength: 10)
-                    TextField("Add a title to your countdown", text: $event_name)
-                        .border(.tertiary)
-                        .textFieldStyle(.roundedBorder)
-                        .onTapGesture {
-                            self.isEditing = true
-                        }
-                    Spacer(minLength: 10)
-                }
+                    HStack {
+                        Spacer(minLength: 10)
+                        TextField("Add a title to your countdown", text: $event_name)
+                            .border(.tertiary)
+                            .textFieldStyle(.roundedBorder)
+                            .onTapGesture {
+                                self.isEditing = true
+                            }
+                        Spacer(minLength: 10)
+                    }
 
-                Text("Select the date")
-                    .font(.title3)
-                    .padding(.top)
-                    .padding(.leading)
-                DatePicker(
+                    Text("Select the date")
+                        .font(.title3)
+                        .padding(.top)
+                        .padding(.leading)
+                    DatePicker(
                         "Start Date",
                         selection: $date,
                         in: Date.now...,
@@ -69,96 +70,99 @@ struct AddItemView: View {
                     .datePickerStyle(.graphical)
                     .onTapGesture(count: 99, perform: {
                         // Override iOS bug
+                        // https://stackoverflow.com/questions/77373659/swiftui-datepicker-issue-ios-17-1
                     })
 
 
-            }
-            .navigationTitle("New Event")
-            .navigationBarItems(
-                trailing: Button(action: {
-                    showTitleAlert = event_name.isEmpty
-                    showImageAlert = eventImage == nil
+                }
+                .navigationTitle("New Event")
+                .navigationBarItems(
+                    trailing: Button(action: {
+                        showTitleAlert = event_name.isEmpty
+                        showImageAlert = eventImage == nil
 
-                    if !showImageAlert && !showTitleAlert {
-                        save()
-                        dismiss()
+                        if !showImageAlert && !showTitleAlert {
+                            save()
+                            dismiss()
+                        }
+                    }) {
+                        // Image(systemName: "plus")
+                        Text("Save")
+                    })
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    self.isEditing = false
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                    self.isEditing = true
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    self.isEditing = false
+                }
+                .alert(
+                    imageAlertDetails.title,
+                    isPresented: $showImageAlert,
+                    presenting: imageAlertDetails
+                ) { imageAlertDetails in
+                    Button("OK") {
+                        // Nothing
                     }
-                }) {
-                    // Image(systemName: "plus")
-                    Text("Save")
-                })
-            .onTapGesture {
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                self.isEditing = false
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-                self.isEditing = true
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-                self.isEditing = false
-            }
-            .alert(
-                imageAlertDetails.title,
-                isPresented: $showImageAlert,
-                presenting: imageAlertDetails
-            ) { imageAlertDetails in
-                Button("OK") {
-                    // Nothing
+                } message: { imageAlertDetails in
+                    Text(imageAlertDetails.message)
                 }
-            } message: { imageAlertDetails in
-                Text(imageAlertDetails.message)
-            }
-            .alert(
-                titleAlertDetails.title,
-                isPresented: $showTitleAlert,
-                presenting: titleAlertDetails
-            ) { titleAlertDetails in
-                Button("OK") {
-                    // Nothing
-                }
-            } message: { titleAlertDetails in
-                Text(titleAlertDetails.message)
-            }
-
-            HStack(spacing: 15) {
-                // Fixed size image container on the left
-                ZStack(alignment: .topLeading) {
-                    if let eventImage {
-                        eventImage
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 128, height: 128)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                    } else {
-                        Text("No Image Selected")
-                            .foregroundColor(.gray)
-                            .frame(width: 128, height: 128)
-                            .opacity(0.5)
+                .alert(
+                    titleAlertDetails.title,
+                    isPresented: $showTitleAlert,
+                    presenting: titleAlertDetails
+                ) { titleAlertDetails in
+                    Button("OK") {
+                        // Nothing
                     }
+                } message: { titleAlertDetails in
+                    Text(titleAlertDetails.message)
                 }
 
-                // PhotosPicker Button on the right with fixed width
-                PhotosPicker("Select an image", selection: $eventPPicker, matching: .images)
-                    .buttonStyle(.bordered)
-            }
-            .onChange(of: eventPPicker) {
-                        Task {
-                            if let loaded = try? await eventPPicker?.loadTransferable(type: Image.self) {
-                                eventImage = loaded
-                                ImgToData()
-                            } else {
-                                print("Failed")
-                            }
+                HStack(spacing: 15) {
+                    // Fixed size image container on the left
+                    ZStack(alignment: .topLeading) {
+                        if let eventImage {
+                            eventImage
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 128, height: 128)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        } else {
+                            Text("No Image Selected")
+                                .foregroundColor(.gray)
+                                .frame(width: 128, height: 128)
+                                .opacity(0.5)
                         }
                     }
-        }
-        .onAppear {
-            if let countdown = countdown {
-                event_name = countdown.title
-                date = countdown.date
-                eventImage = createImage(countdown.image)
+
+                    // PhotosPicker Button on the right with fixed width
+                    PhotosPicker("Select an image", selection: $eventPPicker, matching: .images)
+                        .buttonStyle(.bordered)
+                }
+                .onChange(of: eventPPicker) {
+                    Task {
+                        if let loaded = try? await eventPPicker?.loadTransferable(type: Image.self) {
+                            eventImage = loaded
+                            ImgToData()
+                        } else {
+                            print("Failed")
+                        }
+                    }
+                }
+            }
+            .onAppear {
+                if let countdown = countdown {
+                    event_name = countdown.title
+                    date = countdown.date
+                    eventImage = createImage(countdown.image)
+                }
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 
     private func save() {
