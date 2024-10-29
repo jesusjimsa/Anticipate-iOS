@@ -27,40 +27,50 @@ struct MainView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(countdowns) { item in
-                    let days_left = daysLeft(date: item.date)
 
-                    let event_image: Image = createImage(item.image)
-
-                    HStack {
-                        NavigationLink(destination: DetailedView(countdown: item)) {
-                            event_image
-                                .resizable()
-                                .frame(width: 128, height: 128)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                            VStack(alignment: .leading) {
-                                Text(item.title)
-                                    .font(.title)
-                                    .minimumScaleFactor(0.01)
-                                    .lineLimit(2)
-                                Text("\(days_left < 0 ? 0 : days_left)")
-                                    .font(.system(size: 50))
-                                    .padding(.vertical, 0.5)
-                                if days_left == 1 {
-                                    Text("Days Left")
-                                }
-                                else {
-                                    Text("Day Left")
-                                }
-                            }
-                            .padding(.horizontal, 8)
-                        }
+                if countdowns.isEmpty {
+                    VStack {
+                        Spacer()
+                        Spacer()
+                        Text("Add a new item by tapping the 'Add' button in the corner.")
+                            .font(.title3)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal, 32)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity)
+                        Spacer()
                     }
-                    .padding(.vertical, 10)
                 }
-                .onDelete(perform: removeEvent)
-            }
+
+                List {
+                    ForEach(countdowns) { item in
+                        let days_left = daysLeft(date: item.date)
+                        let event_image: Image = createImage(item.image)
+
+                        HStack {
+                            NavigationLink(destination: DetailedView(countdown: item)) {
+                                event_image
+                                    .resizable()
+                                    .frame(width: 128, height: 128)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                VStack(alignment: .leading) {
+                                    Text(item.title)
+                                        .font(.title)
+                                        .minimumScaleFactor(0.01)
+                                        .lineLimit(2)
+                                    Text("\(days_left < 0 ? 0 : days_left)")
+                                        .font(.system(size: 50))
+                                        .padding(.vertical, 0.5)
+                                    Text(days_left == 1 ? "Day Left" : "Days Left")
+                                }
+                                .padding(.horizontal, 8)
+                            }
+                        }
+                        .padding(.vertical, 10)
+                    }
+                    .onDelete(perform: removeEvent)
+                }
+
             .navigationTitle("Events")
             .navigationBarItems(
                 leading: NavigationLink(destination: SettingsView()) {
