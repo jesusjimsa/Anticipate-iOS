@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     let email = "jesusjimsa@icloud.com"
+    @StateObject private var themeManager = ThemeManager.shared
 
     var body: some View {
         NavigationStack {
@@ -25,15 +26,12 @@ struct SettingsView: View {
 //                    }
 
                 Section(header: Text("General")) {
-                    // NavigationLink(destination: /* Text 상세 보기 View */) {
-                    //        Text("Theme")
-                    //   }
-                    //  NavigationLink(destination: /* Text 상세 보기 View */) {
-                    //      Text("App Icon")
-                    // }
-
-                        Text("🌓 Theme")
-                        Text("📱 App icon")
+                    Picker("🌓 Theme", selection: $themeManager.appTheme) {
+                        ForEach(AppTheme.allCases, id: \.self) { theme in
+                            Text(theme.rawValue).tag(theme)
+                        }
+                    }
+                    Text("📱 App icon")
                 }
                 Section(header: Text("About")) {
                     Link(destination: URL(string: "mailto:\(email)")!, label: {
