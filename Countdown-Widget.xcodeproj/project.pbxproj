@@ -3,35 +3,31 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		884B19B62CD5632E00E411B8 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B19B52CD5632700E411B8 /* ThemeManager.swift */; };
 		88E420282BEAAA060064B747 /* Countdown_WidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420272BEAAA060064B747 /* Countdown_WidgetApp.swift */; };
-		88E4202A2BEAAA060064B747 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420292BEAAA060064B747 /* MainView.swift */; };
 		88E4202C2BEAAA060064B747 /* CountdownEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4202B2BEAAA060064B747 /* CountdownEvent.swift */; };
 		88E4202E2BEAAA0A0064B747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E4202D2BEAAA0A0064B747 /* Assets.xcassets */; };
 		88E420312BEAAA0A0064B747 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E420302BEAAA0A0064B747 /* Preview Assets.xcassets */; };
-		88E420382BEAAAB70064B747 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420372BEAAAB70064B747 /* SettingsView.swift */; };
-		88E4203A2BEAABFA0064B747 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420392BEAABFA0064B747 /* AddItemView.swift */; };
-		88E4203C2BEAAC320064B747 /* DetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4203B2BEAAC320064B747 /* DetailedView.swift */; };
-		88E4203E2BEAAC530064B747 /* IconsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4203D2BEAAC530064B747 /* IconsListView.swift */; };
 		88E420412BEAAD700064B747 /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420402BEAAD700064B747 /* ExtraFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		884B19B52CD5632700E411B8 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		88E420242BEAAA060064B747 /* Countdown-Widget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Countdown-Widget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E420272BEAAA060064B747 /* Countdown_WidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown_WidgetApp.swift; sourceTree = "<group>"; };
-		88E420292BEAAA060064B747 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		88E4202B2BEAAA060064B747 /* CountdownEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownEvent.swift; sourceTree = "<group>"; };
 		88E4202D2BEAAA0A0064B747 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88E420302BEAAA0A0064B747 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		88E420372BEAAAB70064B747 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		88E420392BEAABFA0064B747 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
-		88E4203B2BEAAC320064B747 /* DetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedView.swift; sourceTree = "<group>"; };
-		88E4203D2BEAAC530064B747 /* IconsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsListView.swift; sourceTree = "<group>"; };
 		88E420402BEAAD700064B747 /* ExtraFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		884B19B72CD5635300E411B8 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		88E420212BEAAA060064B747 /* Frameworks */ = {
@@ -63,13 +59,10 @@
 		88E420262BEAAA060064B747 /* Countdown-Widget */ = {
 			isa = PBXGroup;
 			children = (
+				884B19B72CD5635300E411B8 /* Views */,
 				88E4203F2BEAAD040064B747 /* SwiftData */,
 				88E420272BEAAA060064B747 /* Countdown_WidgetApp.swift */,
-				88E420292BEAAA060064B747 /* MainView.swift */,
-				88E420372BEAAAB70064B747 /* SettingsView.swift */,
-				88E4203B2BEAAC320064B747 /* DetailedView.swift */,
-				88E4203D2BEAAC530064B747 /* IconsListView.swift */,
-				88E420392BEAABFA0064B747 /* AddItemView.swift */,
+				884B19B52CD5632700E411B8 /* ThemeManager.swift */,
 				88E4202D2BEAAA0A0064B747 /* Assets.xcassets */,
 				88E4202F2BEAAA0A0064B747 /* Preview Content */,
 				88E420402BEAAD700064B747 /* ExtraFunctions.swift */,
@@ -107,6 +100,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				884B19B72CD5635300E411B8 /* Views */,
 			);
 			name = "Countdown-Widget";
 			productName = "Countdown-Widget";
@@ -163,14 +159,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E4202A2BEAAA060064B747 /* MainView.swift in Sources */,
 				88E420412BEAAD700064B747 /* ExtraFunctions.swift in Sources */,
-				88E420382BEAAAB70064B747 /* SettingsView.swift in Sources */,
 				88E4202C2BEAAA060064B747 /* CountdownEvent.swift in Sources */,
 				88E420282BEAAA060064B747 /* Countdown_WidgetApp.swift in Sources */,
-				88E4203C2BEAAC320064B747 /* DetailedView.swift in Sources */,
-				88E4203A2BEAABFA0064B747 /* AddItemView.swift in Sources */,
-				88E4203E2BEAAC530064B747 /* IconsListView.swift in Sources */,
+				884B19B62CD5632E00E411B8 /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
