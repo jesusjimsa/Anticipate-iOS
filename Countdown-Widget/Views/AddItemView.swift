@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import UserNotifications
 
 struct ImageAlertDetails {
     let title = "Alert"
@@ -83,6 +84,7 @@ struct AddItemView: View {
 
                         if !showImageAlert && !showTitleAlert {
                             save()
+                            schedule_notification()
                             dismiss()
                         }
                     }) {
@@ -176,6 +178,55 @@ struct AddItemView: View {
         else {
             let newCountdown = CountdownEvent(id: UUID(), title: event_name, date: date, image: eventImageData!)
             modelContext.insert(newCountdown)
+        }
+    }
+    
+    private func schedule_notification() {
+        if let countdown {
+            let center = UNUserNotificationCenter.current()
+            let calendar = Calendar.current
+            var dateComponents = calendar.dateComponents([.year, .month, .day], from: countdown.date)
+            
+            dateComponents.hour = 9
+            dateComponents.minute = 0
+            dateComponents.second = 0
+            
+            // Attempt removing notification in case we are editing an event
+            center.removePendingNotificationRequests(withIdentifiers: [countdown.id.uuidString])
+            
+            let content = UNMutableNotificationContent()
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            _ = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            
+            content.title = countdown.title
+            content.sound = UNNotificationSound.default
+            
+            // Attach event image
+            if let imageData = eventImageData {
+                let tempDirectory = FileManager.default.temporaryDirectory
+                let imageURL = tempDirectory.appendingPathComponent("event_image.jpg")
+                
+                do {
+                    // Write the image data to a temporary file
+                    try imageData.write(to: imageURL)
+                    
+                    // Create the notification attachment
+                    let attachment = try UNNotificationAttachment(identifier: "event_image", url: imageURL, options: nil)
+                    content.attachments = [attachment]
+                } catch {
+                    print("Failed to add image attachment: \(error)")
+                }
+            }
+            
+            let request = UNNotificationRequest(identifier: countdown.id.uuidString, content: content, trigger: trigger)
+            
+            center.add(request) { error in
+                if let error = error {
+                    print("Failed to schedule notification: \(error)")
+                } else {
+                    print("Notification rescheduled successfully for \(countdown.date)")
+                }
+            }
         }
     }
 
