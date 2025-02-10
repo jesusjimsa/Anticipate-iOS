@@ -50,6 +50,7 @@ struct MainView: View {
                             NavigationLink(destination: DetailedView(countdown: item)) {
                                 event_image
                                     .resizable()
+                                    .scaledToFill()
                                     .frame(width: 128, height: 128)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                 VStack(alignment: .leading) {
