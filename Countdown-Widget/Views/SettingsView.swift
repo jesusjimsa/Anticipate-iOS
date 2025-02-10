@@ -53,6 +53,10 @@ struct SettingsView: View {
                         Text("🐘 Mastodon")
                     })
 
+                    Link(destination: URL(string: "https://bsky.app/profile/jesusjimsa.bsky.social")!, label: {
+                        Text("🦋 Bluesky")
+                    })
+
                     Link(destination: URL(string: "https://github.com/jesusjimsa/Countdown-Widget-iOS")!, label: {
                         Text("🤓 Source code for this app")
                     })
