@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import UserNotifications
 
 struct ImageAlertDetails {
     let title = "Alert"
@@ -83,6 +84,7 @@ struct AddItemView: View {
 
                         if !showImageAlert && !showTitleAlert {
                             save()
+                            schedule_notification()
                             dismiss()
                         }
                     }) {
@@ -90,7 +92,8 @@ struct AddItemView: View {
                         Text("Save")
                     })
                 .onTapGesture {
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil,
+                                                    for: nil)
                     self.isEditing = false
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
@@ -172,10 +175,61 @@ struct AddItemView: View {
             if let eventImageData {
                 countdown.image = eventImageData
             }
+            event_id = countdown.id
         }
         else {
-            let newCountdown = CountdownEvent(id: UUID(), title: event_name, date: date, image: eventImageData!)
+            event_id = UUID()
+            let newCountdown = CountdownEvent(id: event_id!, title: event_name, date: date, image: eventImageData!)
             modelContext.insert(newCountdown)
+        }
+    }
+
+    private func schedule_notification() {
+        let center = UNUserNotificationCenter.current()
+        let calendar = Calendar.current
+        var dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+
+        dateComponents.hour = 9
+        dateComponents.minute = 0
+        dateComponents.second = 0
+
+        // Attempt removing notification in case we are editing an event
+        center.removePendingNotificationRequests(withIdentifiers: [event_id!.uuidString])
+
+        let content = UNMutableNotificationContent()
+        // This trigger is for testing
+        // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+
+        content.title = event_name + " is today"
+        content.sound = UNNotificationSound.default
+
+        // Attach event image
+        if let imageData = eventImageData {
+            let tempDirectory = FileManager.default.temporaryDirectory
+            let imageURL = tempDirectory.appendingPathComponent("event_image.jpg")
+
+            do {
+                // Write the image data to a temporary file
+                try imageData.write(to: imageURL)
+
+                // Create the notification attachment
+                let attachment = try UNNotificationAttachment(identifier: "event_image", url: imageURL,
+                                                              options: nil)
+                content.attachments = [attachment]
+            } catch {
+                print("Failed to add image attachment: \(error)")
+            }
+        }
+
+        let request = UNNotificationRequest(identifier: event_id!.uuidString, content: content, trigger: trigger)
+
+        center.add(request) { error in
+            if let error = error {
+                print("Failed to schedule notification: \(error)")
+            } else {
+                print("Notification rescheduled successfully for \(date)")
+            }
         }
     }
 
