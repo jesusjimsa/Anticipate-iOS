@@ -198,11 +198,15 @@ struct AddItemView: View {
 
         let content = UNMutableNotificationContent()
         // This trigger is for testing
-        // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
 
         content.title = event_name + " is today"
         content.sound = UNNotificationSound.default
+        
+        if (eventImageData == nil && countdown != nil) {
+            eventImageData = countdown?.image
+        }
 
         // Attach event image
         if let imageData = eventImageData {

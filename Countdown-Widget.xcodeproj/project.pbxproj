@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		884B19B62CD5632E00E411B8 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B19B52CD5632700E411B8 /* ThemeManager.swift */; };
-		88D309F52D5A8A660029FFC1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D309F42D5A8A660029FFC1 /* Launch Screen.storyboard */; };
+		88C983252D5B794100A4F23B /* Launch_Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C983242D5B794100A4F23B /* Launch_Screen.storyboard */; };
 		88E420282BEAAA060064B747 /* Countdown_WidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420272BEAAA060064B747 /* Countdown_WidgetApp.swift */; };
 		88E4202C2BEAAA060064B747 /* CountdownEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4202B2BEAAA060064B747 /* CountdownEvent.swift */; };
 		88E4202E2BEAAA0A0064B747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E4202D2BEAAA0A0064B747 /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 
 /* Begin PBXFileReference section */
 		884B19B52CD5632700E411B8 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
-		88D309F42D5A8A660029FFC1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
+		88C983242D5B794100A4F23B /* Launch_Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Launch_Screen.storyboard; path = "Countdown-Widget/Launch_Screen.storyboard"; sourceTree = SOURCE_ROOT; };
 		88E420242BEAAA060064B747 /* Countdown-Widget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Countdown-Widget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E420272BEAAA060064B747 /* Countdown_WidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown_WidgetApp.swift; sourceTree = "<group>"; };
 		88E4202B2BEAAA060064B747 /* CountdownEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownEvent.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		88E420262BEAAA060064B747 /* Countdown-Widget */ = {
 			isa = PBXGroup;
 			children = (
-				88D309F42D5A8A660029FFC1 /* Launch Screen.storyboard */,
+				88C983242D5B794100A4F23B /* Launch_Screen.storyboard */,
 				884B19B72CD5635300E411B8 /* Views */,
 				88E4203F2BEAAD040064B747 /* SwiftData */,
 				88E420272BEAAA060064B747 /* Countdown_WidgetApp.swift */,
@@ -150,8 +150,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88D309F52D5A8A660029FFC1 /* Launch Screen.storyboard in Resources */,
 				88E420312BEAAA0A0064B747 /* Preview Assets.xcassets in Resources */,
+				88C983252D5B794100A4F23B /* Launch_Screen.storyboard in Resources */,
 				88E4202E2BEAAA0A0064B747 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
