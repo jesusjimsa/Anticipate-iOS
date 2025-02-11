@@ -22,11 +22,11 @@ struct MainView: View {
         ListItem(imageName: "link_img", title: "Item 2", value: 100),
         // Add more list items here
     ]
-    
+
     init() {
         registerForNotifications()
     }
-    
+
     func registerForNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if let error {
