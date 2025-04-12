@@ -16,7 +16,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "88EFCC772D36FF560013E4A8"
+               BlueprintIdentifier = "88AB9BC32DA5AF6200AB9A11"
                BuildableName = "CountdownsExtension.appex"
                BlueprintName = "CountdownsExtension"
                ReferencedContainer = "container:Countdown-Widget.xcodeproj">
