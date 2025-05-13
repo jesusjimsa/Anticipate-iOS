@@ -31,6 +31,13 @@ struct CountdownEntity: AppEntity, Identifiable {
         self.image = image
     }
     
+    init(id: UUID, title: String, date: Date) {
+        self.id = id
+        self.title = title
+        self.date = date
+        self.image = Data()
+    }
+    
     init(countdown: CountdownEvent) {
         self.id = countdown.id
         self.title = countdown.title
@@ -46,31 +53,31 @@ struct CountdownQuery: EntityQuery {
 
     static var defaultQuery = CountdownQuery()
 
-    @Environment(\.modelContext) private var modelContext
+    @Dependency // Added Dependency
+    private var modelContainer: ModelContainer
 
+    @MainActor  // Added Main Actor
     func entities(for identifiers: [UUID]) async throws -> [CountdownEntity] {
-        let descriptor = FetchDescriptor<CountdownEvent>()
-        let countdownEvents = getAllEvents(modelContext: modelContext)
+        let countdownEvents = getAllEvents(modelContext: modelContainer.mainContext)
         
         return countdownEvents.map { event in
             return CountdownEntity(id: event.id, title: event.title, date: event.date, image: event.image)
         }
     }
 
-//    func entities(for modelContext: ModelContext) async throws -> [CountdownEntity] {
-//        let descriptor = FetchDescriptor<CountdownEvent>()
-//
-//        let countdownEvents = getAllEvents(modelContext: modelContext)
-//
-//        return countdownEvents.map { event in
-//            return CountdownEntity(id: event.id, title: event.title, date: event.date, image: event.image)
-//
-//        }
-//    }
-    
+    @MainActor  // Added Main Actor
     func suggestedEntities() async throws -> [CountdownEntity] {
         // Return some suggested entities or an empty array
-        return []
+        let countdownEvents = getAllEvents(modelContext: modelContainer.mainContext)
+        
+        let suggestedCountdowns = countdownEvents.map { event in
+            CountdownEntity(id: event.id, title: event.title, date: event.date, image: event.image)
+        }
+        
+        return Array(suggestedCountdowns.prefix(20))
+//        return countdownEvents.map { event in
+//            return CountdownEntity(id: event.id, title: event.title, date: event.date, image: event.image)
+//        }
     }
     
 }

@@ -45,13 +45,28 @@ struct CountdownsEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
-        }
+        
+//        ZStack {
+//            createImage(entry.configuration.countdown!.image)
+            VStack {
+                Text(entry.configuration.countdown?.title ?? "Default")
+                    .foregroundStyle(.white)
+                    .shadow(
+                            color: Color.primary.opacity(0.3), /// shadow color
+                            radius: 3, /// shadow radius
+                            x: 0, /// x offset
+                            y: 2 /// y offset
+                        )
+                Text("\(daysLeft(date: entry.configuration.countdown?.date ?? Date())) days left")
+                    .foregroundStyle(.white)
+                    .shadow(
+                            color: Color.primary.opacity(0.3), /// shadow color
+                            radius: 3, /// shadow radius
+                            x: 0, /// x offset
+                            y: 2 /// y offset
+                        )
+            }
+//        }
     }
 }
 
@@ -69,13 +84,13 @@ struct Countdowns: Widget {
 extension ConfigurationAppIntent {
     fileprivate static var smiley: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
+        intent.countdown = CountdownEntity(id: UUID(), title: "Test", date: Date())
         return intent
     }
     
     fileprivate static var starEyes: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
+        intent.countdown = CountdownEntity(id: UUID(), title: "Test2", date: Date())
         return intent
     }
 }

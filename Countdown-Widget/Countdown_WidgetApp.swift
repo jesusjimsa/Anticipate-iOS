@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import AppIntents
 
 enum AppTheme: String, CaseIterable {
     case system = "System"
@@ -38,6 +39,12 @@ struct Countdown_WidgetApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+
+    init() {
+        let modelContainer = self.sharedModelContainer
+
+        AppDependencyManager.shared.add(dependency: modelContainer) // Init modelContainer Dependency
+    }
 
     var body: some Scene {
         WindowGroup {

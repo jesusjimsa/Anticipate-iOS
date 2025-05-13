@@ -14,5 +14,13 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
 
     // An example configurable parameter.
     @Parameter(title: "Countdown")
-    var countdown: CountdownEntity
+    var countdown: CountdownEntity?
+    
+    init(countdown: CountdownEntity) {
+        self.countdown = countdown
+    }
+    
+    init() {
+        
+    }
 }

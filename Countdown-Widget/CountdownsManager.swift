@@ -11,7 +11,7 @@ import SwiftData
 
 func getAllEvents(modelContext: ModelContext) -> [CountdownEvent] {
     let descriptor = FetchDescriptor<CountdownEvent>()
-    
+
     do {
         let allEvents = try modelContext.fetch(descriptor)
         return allEvents

@@ -20,6 +20,7 @@
 		88E4202E2BEAAA0A0064B747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E4202D2BEAAA0A0064B747 /* Assets.xcassets */; };
 		88E420312BEAAA0A0064B747 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E420302BEAAA0A0064B747 /* Preview Assets.xcassets */; };
 		88E420412BEAAD700064B747 /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420402BEAAD700064B747 /* ExtraFunctions.swift */; };
+		88FBDAAA2DD3CF2A0014F75A /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420402BEAAD700064B747 /* ExtraFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -276,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88FBDAAA2DD3CF2A0014F75A /* ExtraFunctions.swift in Sources */,
 				88AB9BFB2DA9792A00AB9A11 /* CountdownsManager.swift in Sources */,
 				88AB9BFA2DA9783F00AB9A11 /* CountdownEvent.swift in Sources */,
 			);
