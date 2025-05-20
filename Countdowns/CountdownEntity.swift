@@ -74,7 +74,14 @@ struct CountdownQuery: EntityQuery {
             CountdownEntity(id: event.id, title: event.title, date: event.date, image: event.image)
         }
         
-        return Array(suggestedCountdowns.prefix(20))
+        let count_list = [
+            CountdownEntity(countdown: countdownEvents[0]),
+            CountdownEntity(countdown: countdownEvents[1]),
+            CountdownEntity(countdown: countdownEvents[3])
+        ]
+        
+        return count_list
+        // return Array(suggestedCountdowns.prefix(3))
 //        return countdownEvents.map { event in
 //            return CountdownEntity(id: event.id, title: event.title, date: event.date, image: event.image)
 //        }
