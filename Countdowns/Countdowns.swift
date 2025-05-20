@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+        return SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(countdown: CountdownEntity(id: UUID(), title: "Example", date: Date(), image: UIImage(named: "link_img")?.pngData() ?? Data())))
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
@@ -41,32 +41,58 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationAppIntent
 }
 
+let backgroundGradient = LinearGradient(
+    colors: [Color.red, Color.blue],
+    startPoint: .top, endPoint: .bottom)
+
 struct CountdownsEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        
-//        ZStack {
-//            createImage(entry.configuration.countdown!.image)
-            VStack {
+        // let event_image: Image = createImage(entry.configuration.countdown?.image ?? Data())
+
+        ZStack {
+//            if let uiImage = UIImage(data: entry.configuration.countdown!.image) {
+//                Image(uiImage: uiImage)
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//            }
+//            else {
+//                Image("link_img")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//            }
+//            backgroundGradient
+//                .ignoresSafeArea()
+            VStack(spacing: 30) {
                 Text(entry.configuration.countdown?.title ?? "Default")
                     .foregroundStyle(.white)
+                    .font(.largeTitle)
+                    .minimumScaleFactor(0.01)
+                    .lineLimit(1)
                     .shadow(
-                            color: Color.primary.opacity(0.3), /// shadow color
+                            color: Color.primary.opacity(0.5), /// shadow color
                             radius: 3, /// shadow radius
                             x: 0, /// x offset
                             y: 2 /// y offset
                         )
                 Text("\(daysLeft(date: entry.configuration.countdown?.date ?? Date())) days left")
                     .foregroundStyle(.white)
+                    .font(.title)
+                    .minimumScaleFactor(0.01)
+                    .lineLimit(1)
                     .shadow(
-                            color: Color.primary.opacity(0.3), /// shadow color
+                            color: Color.primary.opacity(0.5), /// shadow color
                             radius: 3, /// shadow radius
                             x: 0, /// x offset
                             y: 2 /// y offset
                         )
             }
+        }
+//        .containerBackground(for: .widget) {
+//            Color.green
 //        }
+//        .background(backgroundGradient)
     }
 }
 
@@ -76,7 +102,7 @@ struct Countdowns: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             CountdownsEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+                .containerBackground(.purple, for: .widget)
         }
     }
 }
