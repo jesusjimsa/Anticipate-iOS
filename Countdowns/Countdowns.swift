@@ -49,21 +49,23 @@ struct CountdownsEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        // let event_image: Image = createImage(entry.configuration.countdown?.image ?? Data())
-
         ZStack {
-//            if let uiImage = UIImage(data: entry.configuration.countdown!.image) {
-//                Image(uiImage: uiImage)
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//            }
-//            else {
-//                Image("link_img")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//            }
-//            backgroundGradient
-//                .ignoresSafeArea()
+            // Background image
+            if let widgetImg = entry.configuration.countdown?.image,
+               let uiImg = UIImage(data: widgetImg) {
+                Image(uiImage: uiImg)
+                    .resizable()
+                    .scaledToFill()
+            } else {
+                // Fallback gradient if no image
+                LinearGradient(
+                    colors: [Color.purple, Color.blue],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            }
+            
+            // Text overlay
             VStack(spacing: 30) {
                 Text(entry.configuration.countdown?.title ?? "Default")
                     .foregroundStyle(.white)
@@ -88,11 +90,8 @@ struct CountdownsEntryView : View {
                             y: 2 /// y offset
                         )
             }
+            .padding()
         }
-//        .containerBackground(for: .widget) {
-//            Color.green
-//        }
-//        .background(backgroundGradient)
     }
 }
 
@@ -102,7 +101,7 @@ struct Countdowns: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             CountdownsEntryView(entry: entry)
-                .containerBackground(.purple, for: .widget)
+                .containerBackground(.fill, for: .widget)
         }
     }
 }
