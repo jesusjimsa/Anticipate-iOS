@@ -47,6 +47,22 @@ let backgroundGradient = LinearGradient(
 
 struct CountdownsEntryView : View {
     var entry: Provider.Entry
+    
+    func daysLeftText(days_left: Int) -> String {
+        var days_left_text: String = "\(days_left) days left"
+
+        if days_left == 1 {
+            days_left_text = "\(days_left) day left"
+        }
+        else if days_left == 0 {
+            days_left_text = "Today!"
+        }
+        else if days_left < 0 {
+            days_left_text = "\(abs(days_left)) days ago"
+        }
+        
+        return days_left_text
+    }
 
     var body: some View {
         ZStack {
@@ -78,7 +94,8 @@ struct CountdownsEntryView : View {
                             x: 0, /// x offset
                             y: 2 /// y offset
                         )
-                Text("\(daysLeft(date: entry.configuration.countdown?.date ?? Date())) days left")
+
+                Text(daysLeftText(days_left: daysLeft(date: entry.configuration.countdown?.date ?? Date())))
                     .foregroundStyle(.white)
                     .font(.title)
                     .minimumScaleFactor(0.01)
