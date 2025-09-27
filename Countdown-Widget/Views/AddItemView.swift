@@ -8,6 +8,7 @@
 import SwiftUI
 import PhotosUI
 import UserNotifications
+import WidgetKit
 
 struct ImageAlertDetails {
     let title = "Alert"
@@ -182,6 +183,11 @@ struct AddItemView: View {
             let newCountdown = CountdownEvent(id: event_id!, title: event_name, date: date, image: eventImageData!)
             modelContext.insert(newCountdown)
         }
+        
+        // Apparently, just one call won't update the widget for some reason
+        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     private func schedule_notification() {
