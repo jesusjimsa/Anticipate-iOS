@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		884B19B62CD5632E00E411B8 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B19B52CD5632700E411B8 /* ThemeManager.swift */; };
+		8884E28F2EAC019F00B77D87 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */; };
+		8884E2902EAC019F00B77D87 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */; };
 		88AB9BC72DA5AF6200AB9A11 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AB9BC62DA5AF6200AB9A11 /* WidgetKit.framework */; };
 		88AB9BC92DA5AF6200AB9A11 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AB9BC82DA5AF6200AB9A11 /* SwiftUI.framework */; };
 		88AB9BD82DA5AF6400AB9A11 /* CountdownsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 88AB9BC42DA5AF6200AB9A11 /* CountdownsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -49,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		884B19B52CD5632700E411B8 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		88AB9BC42DA5AF6200AB9A11 /* CountdownsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CountdownsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		88AB9BC62DA5AF6200AB9A11 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		88AB9BC82DA5AF6200AB9A11 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -148,6 +151,7 @@
 				88E4202F2BEAAA0A0064B747 /* Preview Content */,
 				88E420402BEAAD700064B747 /* ExtraFunctions.swift */,
 				88AB9BF62DA9713500AB9A11 /* CountdownsManager.swift */,
+				8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */,
 			);
 			path = "Countdown-Widget";
 			sourceTree = "<group>";
@@ -240,6 +244,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 88E4201B2BEAAA060064B747;
 			productRefGroup = 88E420252BEAAA060064B747 /* Products */;
@@ -257,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8884E28F2EAC019F00B77D87 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +272,7 @@
 			files = (
 				88E420312BEAAA0A0064B747 /* Preview Assets.xcassets in Resources */,
 				88C983252D5B794100A4F23B /* Launch_Screen.storyboard in Resources */,
+				8884E2902EAC019F00B77D87 /* Localizable.xcstrings in Resources */,
 				88E4202E2BEAAA0A0064B747 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +430,7 @@
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -481,6 +489,7 @@
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
