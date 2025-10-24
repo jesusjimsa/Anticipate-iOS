@@ -52,6 +52,10 @@ struct DetailedView: View {
                         Text("Days Left")
                             .padding(.bottom)
                     }
+                    
+                    Text(countdown!.date, style: .date)
+                        .padding(.top)
+                        .padding(.bottom)
                 }
 
                 VStack {
