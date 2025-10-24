@@ -149,8 +149,12 @@ struct AddItemView: View {
                 }
                 .onChange(of: eventPPicker) {
                     Task {
-                        if let loaded = try? await eventPPicker?.loadTransferable(type: Image.self) {
-                            eventImage = loaded
+                        if let imageData = try? await eventPPicker?.loadTransferable(type: Data.self),
+                           let uiImage = UIImage(data: imageData) {
+                            let fixedImage = uiImage.fixedOrientation()
+                            eventImage = Image(uiImage: fixedImage)
+                            
+                            // Then process for storage
                             ImgToData()
                         } else {
                             print("Failed")
@@ -249,10 +253,13 @@ struct AddItemView: View {
             if let imageData = try await eventPPicker?.loadTransferable(type: Data.self),
                let uiImage = UIImage(data: imageData) {
 
+                // Normalize orientation BEFORE resizing
+                let normalizedImage = uiImage.fixedOrientation()
+                
                 // Resize image for widget use (max 400px width/height)
-                let resizedImage = uiImage.resizedForWidget(maxWidth: 400)
+                let resizedImage = normalizedImage.resizedForWidget(maxWidth: 400)
 
-                // Compress to JPEG with 0.7 quality (good balance of quality/size)
+                // Compress to JPEG with 0.7 quality
                 if let compressedData = resizedImage.jpegData(compressionQuality: 0.7) {
                     eventImageData = compressedData
                     print("Original size: \(imageData.count) bytes, Optimized size: \(compressedData.count) bytes")
@@ -297,6 +304,21 @@ extension UIImage {
         }
         
         return compressedImage
+    }
+    
+    func fixedOrientation() -> UIImage {
+        // If image is already in correct orientation, return as-is
+        if imageOrientation == .up {
+            return self
+        }
+        
+        // Render the image in correct orientation
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(in: CGRect(origin: .zero, size: size))
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return normalizedImage ?? self
     }
 }
 
