@@ -99,6 +99,7 @@ struct MainView: View {
         for index in indexSet {
             let event = countdowns[index]
 
+            removeNotification(event_id: event.id.uuidString)
             modelContext.delete(event)
         }
     }

@@ -195,6 +195,7 @@ struct AddItemView: View {
         let calendar = Calendar.current
         var dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
 
+        // Send notifications at 9:00 the day of the event
         dateComponents.hour = 9
         dateComponents.minute = 0
         dateComponents.second = 0

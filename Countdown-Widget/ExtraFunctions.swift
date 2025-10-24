@@ -8,12 +8,15 @@
 import Foundation
 import SwiftUI
 
-func daysBetween(start: Date, end: Date) -> Int {
-    return Calendar.current.dateComponents([.day], from: start, to: end).day!
-}
-
 func daysLeft(date: Date) -> Int {
-    return daysBetween(start: Date(), end: date)
+    let calendar = Calendar.current
+    let startOfToday = calendar.startOfDay(for: Date())
+    let startOfTargetDay = calendar.startOfDay(for: date)
+
+    // Calculate the difference in days
+    let components = calendar.dateComponents([.day], from: startOfToday, to: startOfTargetDay)
+
+    return components.day ?? 0
 }
 
 func createImage(_ value: Data) -> Image {
@@ -27,3 +30,10 @@ func createImage(_ value: Data) -> Image {
     return Image(systemImage: "some_default")
 #endif
 }
+
+func removeNotification(event_id: String) {
+    let center = UNUserNotificationCenter.current()
+    
+    center.removePendingNotificationRequests(withIdentifiers: [event_id])
+}
+

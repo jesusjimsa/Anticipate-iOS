@@ -94,6 +94,7 @@ struct DetailedView: View {
     }
 
     private func delete(_ event: CountdownEvent) {
+        removeNotification(event_id: event.id.uuidString)
         modelContext.delete(event)
         dismiss()
     }
