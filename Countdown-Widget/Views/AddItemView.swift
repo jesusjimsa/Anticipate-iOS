@@ -8,6 +8,7 @@
 import SwiftUI
 import PhotosUI
 import UserNotifications
+import WidgetKit
 
 struct ImageAlertDetails {
     let title = "Alert"
@@ -182,6 +183,11 @@ struct AddItemView: View {
             let newCountdown = CountdownEvent(id: event_id!, title: event_name, date: date, image: eventImageData!)
             modelContext.insert(newCountdown)
         }
+        
+        // Apparently, just one call won't update the widget for some reason
+        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     private func schedule_notification() {
@@ -239,14 +245,57 @@ struct AddItemView: View {
 
     private func ImgToData() {
         Task { @MainActor in
-            if let imageData = try await eventPPicker?.loadTransferable(type: Data.self) {
-                eventImageData = imageData
-            }
-            else {
-                // Handle error (e.g., print message, show alert)
+            if let imageData = try await eventPPicker?.loadTransferable(type: Data.self),
+               let uiImage = UIImage(data: imageData) {
+
+                // Resize image for widget use (max 400px width/height)
+                let resizedImage = uiImage.resizedForWidget(maxWidth: 400)
+
+                // Compress to JPEG with 0.7 quality (good balance of quality/size)
+                if let compressedData = resizedImage.jpegData(compressionQuality: 0.7) {
+                    eventImageData = compressedData
+                    print("Original size: \(imageData.count) bytes, Optimized size: \(compressedData.count) bytes")
+                }
+                else {
+                    print("Failed to compress image")
+                    eventImageData = imageData // Fallback to original
+                }
+            } else {
                 print("Error loading image data")
             }
         }
+    }
+}
+
+extension UIImage {
+    func resizedForWidget(maxWidth: CGFloat = 400) -> UIImage {
+        // If image is already small enough, return as-is
+        if size.width <= maxWidth && size.height <= maxWidth {
+            return self
+        }
+        
+        let scale = min(maxWidth / size.width, maxWidth / size.height)
+        let newSize = CGSize(width: size.width * scale, height: size.height * scale)
+        
+        // Use UIGraphicsImageRenderer for better performance and memory management
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: newSize))
+        }
+    }
+    
+    // Alternative method with more aggressive compression for widgets
+    func optimizedForWidget() -> UIImage {
+        // Resize to maximum 300px for widgets (more conservative)
+        let resized = resizedForWidget(maxWidth: 300)
+        
+        // Convert to JPEG and back to reduce file size
+        guard let jpegData = resized.jpegData(compressionQuality: 0.8),
+              let compressedImage = UIImage(data: jpegData) else {
+            return resized
+        }
+        
+        return compressedImage
     }
 }
 

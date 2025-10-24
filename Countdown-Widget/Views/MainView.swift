@@ -17,11 +17,11 @@ struct ListItem: Identifiable {
 }
 
 struct MainView: View {
-    let items: [ListItem] = [
-        ListItem(imageName: "link_img", title: "Rrrtwrww", value: 93),
-        ListItem(imageName: "link_img", title: "Item 2", value: 100),
-        // Add more list items here
-    ]
+//    let items: [ListItem] = [
+//        ListItem(imageName: "link_img", title: "Rrrtwrww", value: 93),
+//        ListItem(imageName: "link_img", title: "Item 2", value: 100),
+//        // Add more list items here
+//    ]
 
     init() {
         registerForNotifications()
