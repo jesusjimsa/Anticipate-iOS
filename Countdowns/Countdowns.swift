@@ -120,6 +120,7 @@ struct Countdowns: Widget {
             CountdownsEntryView(entry: entry)
                 .containerBackground(.fill, for: .widget)
         }
+        .contentMarginsDisabled()
     }
 }
 
