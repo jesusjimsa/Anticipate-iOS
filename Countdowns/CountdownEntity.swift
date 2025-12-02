@@ -20,9 +20,13 @@ struct CountdownEntity: AppEntity, Identifiable {
         DisplayRepresentation(title: "\(title)")
     }
     
-    static var defaultQuery = CountdownQuery()
+    static var defaultQuery: CountdownQuery {
+        CountdownQuery()
+    }
     
-    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Countdown"
+    static var typeDisplayRepresentation: TypeDisplayRepresentation {
+        TypeDisplayRepresentation(name: "Countdown")
+    }
     
     init(id: UUID, title: String, date: Date, image: Data) {
         self.id = id
@@ -49,9 +53,13 @@ struct CountdownEntity: AppEntity, Identifiable {
 struct CountdownQuery: EntityQuery {
     typealias Entity = CountdownEntity
     
-    static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Countdown Event")
+    static var typeDisplayRepresentation: TypeDisplayRepresentation {
+        TypeDisplayRepresentation(name: "Countdown")
+    }
 
-    static var defaultQuery = CountdownQuery()
+    static var defaultQuery: CountdownQuery {
+        CountdownQuery()
+    }
 
     @Dependency // Added Dependency
     private var modelContainer: ModelContainer

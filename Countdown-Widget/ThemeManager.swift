@@ -14,6 +14,9 @@ class ThemeManager: ObservableObject {
         }
     }
 
-    static let shared = ThemeManager()
+    static var shared: ThemeManager {
+        ThemeManager()
+    }
+
     private init() {}
 }
