@@ -191,17 +191,6 @@
         }
       }
     },
-    "Countdown Event" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Evento de cuenta atrás"
-          }
-        }
-      }
-    },
     "Day Left" : {
       "localizations" : {
         "es" : {

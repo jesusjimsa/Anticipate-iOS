@@ -14,8 +14,6 @@ struct DeleteItemAlertDetails {
 }
 
 struct DetailedView: View {
-//    var eventIndex: Int?
-
     var countdown: CountdownEvent?
 
     @Environment(\.modelContext) private var modelContext
@@ -28,13 +26,12 @@ struct DetailedView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Spacer(minLength: 30)
                 createImage(countdown!.image)
                     .resizable()
-//                    .scaledToFill()
-                    .aspectRatio(contentMode: .fit)
-//                    .frame(height: 300)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
                     .clipped()
-                    .frame(width: UIScreen.main.bounds.width, height: 300)
 
                 VStack {
                     let daysLeft: Int = daysLeft(date: countdown!.date)
@@ -57,18 +54,15 @@ struct DetailedView: View {
                         .padding(.top)
                         .padding(.bottom)
                 }
+                .offset(y: -30)
 
-                VStack {
-//                    Button(action: {}, label: {
-//                        Text("Edit Event")
-//                            .frame(maxWidth: .infinity)
-//                    })
+                HStack {
                     NavigationLink(destination: AddItemView(countdown: countdown), label: {
                         Text("Edit Event")
                             .frame(maxWidth: .infinity)
                     })
                     .buttonStyle(.bordered)
-                    .padding(.horizontal)
+                    .padding(.leading)
 
                     Button { isDeleting = true } label: {
                         Text("Delete Event")
@@ -76,24 +70,25 @@ struct DetailedView: View {
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.bordered)
-                    .padding(.horizontal)
+                    .padding(.trailing)
                 }
-                .alert(
-                    deleteItemAlertDetails.title,
-                    isPresented: $isDeleting,
-                    presenting: deleteItemAlertDetails
-                ) { titleAlertDetails in
-                    Button("Yes", role: .destructive) {
-                        delete(countdown!)
-                    }
-                    Button("Cancel", role: .cancel) {
-                        isDeleting = false
-                    }
-                } message: { deleteItemAlertDetails in
-                    Text(deleteItemAlertDetails.message)
-                }
+                .offset(y: -30)
             }
             .navigationTitle("\(countdown!.title)")
+            .alert(
+                deleteItemAlertDetails.title,
+                isPresented: $isDeleting,
+                presenting: deleteItemAlertDetails
+            ) { titleAlertDetails in
+                Button("Yes", role: .destructive) {
+                    delete(countdown!)
+                }
+                Button("Cancel", role: .cancel) {
+                    isDeleting = false
+                }
+            } message: { deleteItemAlertDetails in
+                Text(deleteItemAlertDetails.message)
+            }
         }
     }
 
