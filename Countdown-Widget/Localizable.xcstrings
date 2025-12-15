@@ -192,6 +192,7 @@
       }
     },
     "Countdown Event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
