@@ -238,12 +238,13 @@ struct AddItemView: View {
         }
 
         let request = UNNotificationRequest(identifier: event_id!.uuidString, content: content, trigger: trigger)
+        let scheduledDate = date    // Capture the date value before the closure to avoid warning
 
         center.add(request) { error in
             if let error = error {
                 print("Failed to schedule notification: \(error)")
             } else {
-                print("Notification rescheduled successfully for \(date)")
+                print("Notification rescheduled successfully for \(scheduledDate)")
             }
         }
     }

@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct SettingsView: View {
     let email = "jesusjimsa@icloud.com"
     @StateObject private var themeManager = ThemeManager.shared
+    @State private var products: [Product] = []
+    @State private var errorMessage: String?
+    @State private var isLoading = false
 
     var body: some View {
         NavigationStack {
@@ -61,16 +65,31 @@ struct SettingsView: View {
                         Text("🤓 Source code for this app")
                     })
                 }
-                Section() {
-                    Text("💰 Tip Jar")
+
+                Section(header: Text("💰 Tip Jar")) {
+                    VStack {
+                        ProductView(id: "small_tip")
+                            .productViewStyle(.compact)
+                        ProductView(id: "medium_tip")
+                            .productViewStyle(.compact)
+                        ProductView(id: "big_tip")
+                            .productViewStyle(.compact)
+                        ProductView(id: "huge_tip")
+                            .productViewStyle(.compact)
+                        ProductView(id: "mega_tip")
+                            .productViewStyle(.compact)
+                    }
+                    
                 }
+                
             }
             .navigationTitle("Settings")
             .listStyle(InsetGroupedListStyle())
-
         }
     }
 }
+
+
 
 #Preview {
     SettingsView()

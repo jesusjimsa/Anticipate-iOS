@@ -10,6 +10,7 @@
 		884B19B62CD5632E00E411B8 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B19B52CD5632700E411B8 /* ThemeManager.swift */; };
 		8884E28F2EAC019F00B77D87 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */; };
 		8884E2902EAC019F00B77D87 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */; };
+		888D43B62EE8BD9200BBFF4C /* Anticipate Tips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 888D43B52EE8BD9200BBFF4C /* Anticipate Tips.storekit */; };
 		88AB9BC72DA5AF6200AB9A11 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AB9BC62DA5AF6200AB9A11 /* WidgetKit.framework */; };
 		88AB9BC92DA5AF6200AB9A11 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AB9BC82DA5AF6200AB9A11 /* SwiftUI.framework */; };
 		88AB9BD82DA5AF6400AB9A11 /* CountdownsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 88AB9BC42DA5AF6200AB9A11 /* CountdownsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -22,7 +23,6 @@
 		88E4202E2BEAAA0A0064B747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E4202D2BEAAA0A0064B747 /* Assets.xcassets */; };
 		88E420312BEAAA0A0064B747 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E420302BEAAA0A0064B747 /* Preview Assets.xcassets */; };
 		88E420412BEAAD700064B747 /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420402BEAAD700064B747 /* ExtraFunctions.swift */; };
-		88EADB262EDA30C000348838 /* Anticipate Tips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 88EADB252EDA30C000348838 /* Anticipate Tips.storekit */; };
 		88EADB2A2EDA318500348838 /* Terms.md in Resources */ = {isa = PBXBuildFile; fileRef = 88EADB292EDA318500348838 /* Terms.md */; };
 		88FBDAAA2DD3CF2A0014F75A /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420402BEAAD700064B747 /* ExtraFunctions.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +54,7 @@
 /* Begin PBXFileReference section */
 		884B19B52CD5632700E411B8 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		888D43B52EE8BD9200BBFF4C /* Anticipate Tips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Anticipate Tips.storekit"; sourceTree = "<group>"; };
 		88AB9BC42DA5AF6200AB9A11 /* CountdownsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CountdownsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		88AB9BC62DA5AF6200AB9A11 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		88AB9BC82DA5AF6200AB9A11 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -67,7 +68,6 @@
 		88E4202D2BEAAA0A0064B747 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88E420302BEAAA0A0064B747 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		88E420402BEAAD700064B747 /* ExtraFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctions.swift; sourceTree = "<group>"; };
-		88EADB252EDA30C000348838 /* Anticipate Tips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Anticipate Tips.storekit"; sourceTree = "<group>"; };
 		88EADB292EDA318500348838 /* Terms.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Terms.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,7 +157,7 @@
 				88E420402BEAAD700064B747 /* ExtraFunctions.swift */,
 				88AB9BF62DA9713500AB9A11 /* CountdownsManager.swift */,
 				8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */,
-				88EADB252EDA30C000348838 /* Anticipate Tips.storekit */,
+				888D43B52EE8BD9200BBFF4C /* Anticipate Tips.storekit */,
 			);
 			path = "Countdown-Widget";
 			sourceTree = "<group>";
@@ -280,8 +280,8 @@
 				88E420312BEAAA0A0064B747 /* Preview Assets.xcassets in Resources */,
 				88C983252D5B794100A4F23B /* Launch_Screen.storyboard in Resources */,
 				8884E2902EAC019F00B77D87 /* Localizable.xcstrings in Resources */,
-				88EADB262EDA30C000348838 /* Anticipate Tips.storekit in Resources */,
 				88E4202E2BEAAA0A0064B747 /* Assets.xcassets in Resources */,
+				888D43B62EE8BD9200BBFF4C /* Anticipate Tips.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
