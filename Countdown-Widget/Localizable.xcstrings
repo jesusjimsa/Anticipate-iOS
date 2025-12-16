@@ -271,6 +271,16 @@
         }
       }
     },
+    "Long press and edit the widget to select countdown" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantén pulsado y edita el widget para seleccionar una cuenta atrás"
+          }
+        }
+      }
+    },
     "New Event" : {
       "localizations" : {
         "es" : {

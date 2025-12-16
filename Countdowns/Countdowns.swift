@@ -9,13 +9,27 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        return SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(countdown: CountdownEntity(id: UUID(), title: "Example", date: Date(), image: UIImage(named: "link_img")?.pngData() ?? Data())))
-    }
+    func getForestConfiguration() -> ConfigurationAppIntent {
+            let ten_days = Calendar.current.date(byAdding: .day, value: 10, to: Date()) ?? Date()
+            let forestData = UIImage(named: "forest")?.jpegData(compressionQuality: 0.5) ?? Data()
+            
+            let entity = CountdownEntity(
+                id: UUID(),
+                title: "Example",
+                date: ten_days,
+                image: forestData
+            )
+            
+            return ConfigurationAppIntent(countdown: entity)
+        }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
-    }
+        func placeholder(in context: Context) -> SimpleEntry {
+            return SimpleEntry(date: Date(), configuration: getForestConfiguration())
+        }
+
+        func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
+            return SimpleEntry(date: Date(), configuration: getForestConfiguration())
+        }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
         var entries: [SimpleEntry] = []
@@ -30,10 +44,6 @@ struct Provider: AppIntentTimelineProvider {
 
         return Timeline(entries: entries, policy: .atEnd)
     }
-
-//    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
 }
 
 struct SimpleEntry: TimelineEntry {
@@ -47,6 +57,7 @@ let backgroundGradient = LinearGradient(
 
 struct CountdownsEntryView : View {
     var entry: Provider.Entry
+    let ten_days = Calendar.current.date(byAdding: .day, value: 10, to: Date()) ?? Date()
     
     func daysLeftText(days_left: Int) -> String {
         var days_left_text: String = "\(days_left) days left"
@@ -72,7 +83,13 @@ struct CountdownsEntryView : View {
                 Image(uiImage: uiImg)
                     .resizable()
                     .scaledToFill()
-            } else {
+            }
+            else if let forestImg = UIImage(named: "forest") {
+                Image(uiImage: forestImg)
+                    .resizable()
+                    .scaledToFill()
+            }
+            else {
                 // Fallback gradient if no image
                 LinearGradient(
                     colors: [Color.purple, Color.blue],
@@ -81,25 +98,13 @@ struct CountdownsEntryView : View {
                 )
             }
             
-            // Text overlay
-            VStack(spacing: 30) {
-                Text(entry.configuration.countdown?.title ?? "Default")
+            if entry.configuration.countdown?.title == nil {
+                Text("Long press and edit the widget to select countdown")
                     .foregroundStyle(.white)
-                    .font(.largeTitle)
+                    .font(.title2)
+                    .multilineTextAlignment(.center)
                     .minimumScaleFactor(0.01)
-                    .lineLimit(1)
-                    .shadow(
-                            color: Color.primary.opacity(0.5), /// shadow color
-                            radius: 3, /// shadow radius
-                            x: 0, /// x offset
-                            y: 2 /// y offset
-                        )
-
-                Text(daysLeftText(days_left: daysLeft(date: entry.configuration.countdown?.date ?? Date())))
-                    .foregroundStyle(.white)
-                    .font(.title)
-                    .minimumScaleFactor(0.01)
-                    .lineLimit(1)
+                    .lineLimit(3)
                     .shadow(
                             color: Color.primary.opacity(0.5), /// shadow color
                             radius: 3, /// shadow radius
@@ -107,7 +112,35 @@ struct CountdownsEntryView : View {
                             y: 2 /// y offset
                         )
             }
-            .padding()
+            else {
+                VStack(spacing: 30) {
+                    Text(entry.configuration.countdown?.title ?? "Example")
+                        .foregroundStyle(.white)
+                        .font(.largeTitle)
+                        .minimumScaleFactor(0.01)
+                        .lineLimit(1)
+                        .shadow(
+                                color: Color.primary.opacity(0.5), /// shadow color
+                                radius: 3, /// shadow radius
+                                x: 0, /// x offset
+                                y: 2 /// y offset
+                            )
+                    
+                    Text(daysLeftText(days_left: daysLeft(date: entry.configuration.countdown?.date ?? ten_days)))
+                        .foregroundStyle(.white)
+                        .font(.title)
+                        .minimumScaleFactor(0.01)
+                        .lineLimit(1)
+                        .shadow(
+                                color: Color.primary.opacity(0.5), /// shadow color
+                                radius: 3, /// shadow radius
+                                x: 0, /// x offset
+                                y: 2 /// y offset
+                            )
+                }
+                .padding()
+            }
+            
         }
     }
 }
