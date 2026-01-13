@@ -113,34 +113,37 @@ struct CountdownsEntryView : View {
                         )
             }
             else {
-                VStack(spacing: 30) {
-                    Text(entry.configuration.countdown?.title ?? "Example")
-                        .foregroundStyle(.white)
-                        .font(.largeTitle)
-                        .minimumScaleFactor(0.01)
-                        .lineLimit(1)
-                        .shadow(
+                GeometryReader { geometry in
+                    VStack(spacing: 30) {
+                        Text(entry.configuration.countdown?.title ?? "Example")
+                            .foregroundStyle(.white)
+                            .font(.largeTitle)
+                            .frame(maxWidth: geometry.size.width * 0.8)
+                            .minimumScaleFactor(0.01)
+                            .lineLimit(1)
+                            .shadow(
                                 color: Color.primary.opacity(0.5), /// shadow color
                                 radius: 3, /// shadow radius
                                 x: 0, /// x offset
                                 y: 2 /// y offset
                             )
-                    
-                    Text(daysLeftText(days_left: daysLeft(date: entry.configuration.countdown?.date ?? ten_days)))
-                        .foregroundStyle(.white)
-                        .font(.title)
-                        .minimumScaleFactor(0.01)
-                        .lineLimit(1)
-                        .shadow(
+
+                        Text(daysLeftText(days_left: daysLeft(date: entry.configuration.countdown?.date ?? ten_days)))
+                            .foregroundStyle(.white)
+                            .font(.title)
+                            .minimumScaleFactor(0.01)
+                            .lineLimit(1)
+                            .shadow(
                                 color: Color.primary.opacity(0.5), /// shadow color
                                 radius: 3, /// shadow radius
                                 x: 0, /// x offset
                                 y: 2 /// y offset
                             )
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding()
                 }
-                .padding()
             }
-            
         }
     }
 }
