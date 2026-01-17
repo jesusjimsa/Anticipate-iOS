@@ -24,6 +24,7 @@
 		88E420312BEAAA0A0064B747 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E420302BEAAA0A0064B747 /* Preview Assets.xcassets */; };
 		88E420412BEAAD700064B747 /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420402BEAAD700064B747 /* ExtraFunctions.swift */; };
 		88EADB2A2EDA318500348838 /* Terms.md in Resources */ = {isa = PBXBuildFile; fileRef = 88EADB292EDA318500348838 /* Terms.md */; };
+		88F85F552F1C1A3900C762D1 /* PRIVACY.md in Resources */ = {isa = PBXBuildFile; fileRef = 88F85F542F1C1A3900C762D1 /* PRIVACY.md */; };
 		88FBDAAA2DD3CF2A0014F75A /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E420402BEAAD700064B747 /* ExtraFunctions.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		88E420302BEAAA0A0064B747 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		88E420402BEAAD700064B747 /* ExtraFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraFunctions.swift; sourceTree = "<group>"; };
 		88EADB292EDA318500348838 /* Terms.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Terms.md; sourceTree = "<group>"; };
+		88F85F542F1C1A3900C762D1 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -125,6 +127,7 @@
 		88E4201B2BEAAA060064B747 = {
 			isa = PBXGroup;
 			children = (
+				88F85F542F1C1A3900C762D1 /* PRIVACY.md */,
 				88EADB292EDA318500348838 /* Terms.md */,
 				88AB9BF42DA967AC00AB9A11 /* CountdownsExtension.entitlements */,
 				88E420262BEAAA060064B747 /* Countdown-Widget */,
@@ -270,6 +273,7 @@
 			files = (
 				8884E28F2EAC019F00B77D87 /* Localizable.xcstrings in Resources */,
 				88EADB2A2EDA318500348838 /* Terms.md in Resources */,
+				88F85F552F1C1A3900C762D1 /* PRIVACY.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
