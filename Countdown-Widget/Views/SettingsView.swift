@@ -35,7 +35,7 @@ struct SettingsView: View {
                             Text(theme.rawValue).tag(theme)
                         }
                     }
-                    Text("📱 App icon")
+//                    Text("📱 App icon")
                 }
                 Section(header: Text("About")) {
                     Link(destination: URL(string: "mailto:\(email)")!, label: {
