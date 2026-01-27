@@ -36,6 +36,7 @@ struct AddItemView: View {
     @State private var titleAlertDetails = TitleAlertDetails()
 
     @State private var isEditing: Bool = false
+    @State private var showGallery = false
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
@@ -143,9 +144,19 @@ struct AddItemView: View {
                         }
                     }
 
-                    // PhotosPicker Button on the right with fixed width
-                    PhotosPicker("Select an image", selection: $eventPPicker, matching: .images)
+                    VStack(alignment: .leading, spacing: 10) {
+                        // PhotosPicker Button
+                        PhotosPicker("Select an image", selection: $eventPPicker, matching: .images)
+                            .buttonStyle(.bordered)
+                        
+                        // Gallery Button
+                        Button(action: {
+                            showGallery = true
+                        }) {
+                            Text("Choose from gallery")
+                        }
                         .buttonStyle(.bordered)
+                    }
                 }
                 .onChange(of: eventPPicker) {
                     Task {
@@ -160,6 +171,9 @@ struct AddItemView: View {
                             print("Failed")
                         }
                     }
+                }
+                .sheet(isPresented: $showGallery) {
+                    ImageGalleryView(selectedImage: $eventImage, selectedImageData: $eventImageData)
                 }
             }
             .onAppear {

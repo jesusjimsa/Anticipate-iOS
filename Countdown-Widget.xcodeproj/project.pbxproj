@@ -92,6 +92,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		884B19B72CD5635300E411B8 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		889EE6BF2F2954E60037F3D8 /* Gallery-Photos */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Gallery-Photos"; sourceTree = "<group>"; };
 		88AB9BCA2DA5AF6200AB9A11 /* Countdowns */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (88A421C62DAA9027002E245E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 88AB9BDC2DA5AF6400AB9A11 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Countdowns; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -149,6 +150,7 @@
 		88E420262BEAAA060064B747 /* Countdown-Widget */ = {
 			isa = PBXGroup;
 			children = (
+				889EE6BF2F2954E60037F3D8 /* Gallery-Photos */,
 				88AB9BF52DA967B700AB9A11 /* Countdown-Widget.entitlements */,
 				88C983242D5B794100A4F23B /* Launch_Screen.storyboard */,
 				884B19B72CD5635300E411B8 /* Views */,
@@ -197,6 +199,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				889EE6BF2F2954E60037F3D8 /* Gallery-Photos */,
 				88AB9BCA2DA5AF6200AB9A11 /* Countdowns */,
 			);
 			name = CountdownsExtension;
@@ -345,7 +348,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jesusjimsa.anticipate.Countdowns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -376,7 +379,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jesusjimsa.anticipate.Countdowns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -540,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jesusjimsa.anticipate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -580,7 +583,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jesusjimsa.anticipate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
