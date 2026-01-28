@@ -162,12 +162,32 @@
         }
       }
     },
+    "Browse stock images" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GalleryImage(imageName: \"new-year\"),"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancelar"
+          }
+        }
+      }
+    },
+    "Choose Image" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir Imagen"
           }
         }
       }
