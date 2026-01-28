@@ -15,16 +15,42 @@ struct ImageGalleryView: View {
     
     // Add your gallery images here
     let galleryImages: [GalleryImage] = [
-        GalleryImage(name: "birthday 1", imageName: "birthday1"),
-        GalleryImage(name: "birthday 2", imageName: "birthday2"),
-        GalleryImage(name: "birthday 3", imageName: "birthday3"),
-//        GalleryImage(name: "wedding", imageName: "wedding"),
-//        GalleryImage(name: "vacation", imageName: "vacation"),
-//        GalleryImage(name: "graduation", imageName: "graduation"),
-//        GalleryImage(name: "anniversary", imageName: "anniversary"),
-//        GalleryImage(name: "concert", imageName: "concert"),
-        // Add more images as needed
+        GalleryImage(imageName: "birthday1"),
+        GalleryImage(imageName: "birthday2"),
+        GalleryImage(imageName: "birthday3"),
+        GalleryImage(imageName: "bbq1"),
+        GalleryImage(imageName: "bbq2"),
+        GalleryImage(imageName: "wedding1"),
+        GalleryImage(imageName: "wedding2"),
+        GalleryImage(imageName: "party1"),
+        GalleryImage(imageName: "party2"),
+        GalleryImage(imageName: "party3"),
+        GalleryImage(imageName: "remote"),
+        GalleryImage(imageName: "gaming"),
+        GalleryImage(imageName: "beach"),
+        GalleryImage(imageName: "mountain"),
+        GalleryImage(imageName: "skyscraper"),
+        GalleryImage(imageName: "new-year"),
+        GalleryImage(imageName: "christmas"),
+        GalleryImage(imageName: "halloween"),
+        GalleryImage(imageName: "concert1"),
+        GalleryImage(imageName: "concert2"),
+        GalleryImage(imageName: "corporate"),
+        GalleryImage(imageName: "dog"),
+        GalleryImage(imageName: "cat"),
+        GalleryImage(imageName: "horse"),
+        GalleryImage(imageName: "london"),
+        GalleryImage(imageName: "madrid"),
+        GalleryImage(imageName: "new-york"),
+        GalleryImage(imageName: "paris"),
+        GalleryImage(imageName: "rome"),
+        GalleryImage(imageName: "san-francisco"),
+        GalleryImage(imageName: "sydney"),
+        GalleryImage(imageName: "tokyo"),
+        GalleryImage(imageName: "berlin"),
+        
     ]
+
     
     let columns = [
         GridItem(.flexible(), spacing: 2),
@@ -82,6 +108,5 @@ struct ImageGalleryView: View {
 
 struct GalleryImage: Identifiable {
     let id = UUID()
-    let name: String
     let imageName: String
 }

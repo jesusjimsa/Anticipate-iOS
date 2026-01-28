@@ -153,7 +153,7 @@ struct AddItemView: View {
                         Button(action: {
                             showGallery = true
                         }) {
-                            Text("Choose from gallery")
+                            Text("Browse stock images")
                         }
                         .buttonStyle(.bordered)
                     }
