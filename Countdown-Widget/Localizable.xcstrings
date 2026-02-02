@@ -302,6 +302,16 @@
         }
       }
     },
+    "Generate with AI" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generar con IA"
+          }
+        }
+      }
+    },
     "Icons" : {
       "localizations" : {
         "es" : {
@@ -368,6 +378,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Encendido"
+          }
+        }
+      }
+    },
+    "Other options" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otras opciones"
           }
         }
       }

@@ -9,6 +9,7 @@ import SwiftUI
 import PhotosUI
 import UserNotifications
 import WidgetKit
+import ImagePlayground
 
 struct ImageAlertDetails {
     let title = "Alert"
@@ -37,9 +38,13 @@ struct AddItemView: View {
 
     @State private var isEditing: Bool = false
     @State private var showGallery = false
+    
+    @State private var isPresented: Bool = false
+    @State private var AIimageURL: URL?
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.supportsImagePlayground) private var supportsImagePlayground
 
     var body: some View {
         NavigationStack {
@@ -148,14 +153,34 @@ struct AddItemView: View {
                         // PhotosPicker Button
                         PhotosPicker("Select an image", selection: $eventPPicker, matching: .images)
                             .buttonStyle(.bordered)
-                        
-                        // Gallery Button
-                        Button(action: {
-                            showGallery = true
-                        }) {
-                            Text("Browse stock images")
+
+                        if supportsImagePlayground {
+                            Menu("Other options") {
+                                // Gallery Button
+                                Button(action: {
+                                    showGallery = true
+                                }) {
+                                    Text("Browse stock images")
+                                }
+
+                                // Image Playground
+                                Button(action: {
+                                    isPresented = true
+                                    }) {
+                                    Text("Generate with AI")
+                               }
+                            }
+                            .buttonStyle(.bordered)
                         }
-                        .buttonStyle(.bordered)
+                        else {
+                            // Gallery Button
+                            Button(action: {
+                                showGallery = true
+                            }) {
+                                Text("Browse stock images")
+                            }
+                            .buttonStyle(.bordered)
+                        }
                     }
                 }
                 .onChange(of: eventPPicker) {
@@ -169,6 +194,23 @@ struct AddItemView: View {
                             ImgToData()
                         } else {
                             print("Failed")
+                        }
+                    }
+                }
+                .imagePlaygroundSheet(isPresented: $isPresented, concepts: [.text(event_name.isEmpty ? "" : event_name)]) { url in
+                    // Handle the generated image
+                    AIimageURL = url
+                    
+                    // Load the image from the URL
+                    if let imageData = try? Data(contentsOf: url),
+                       let uiImage = UIImage(data: imageData) {
+                        let fixedImage = uiImage.fixedOrientation()
+                        eventImage = Image(uiImage: fixedImage)
+                        
+                        // Process for storage
+                        let resizedImage = fixedImage.optimizedForWidget()
+                        if let compressedData = resizedImage.jpegData(compressionQuality: 0.7) {
+                            eventImageData = compressedData
                         }
                     }
                 }
