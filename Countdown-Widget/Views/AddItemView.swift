@@ -160,15 +160,17 @@ struct AddItemView: View {
                                 Button(action: {
                                     showGallery = true
                                 }) {
+                                    Image(systemName: "photo.stack")
                                     Text("Browse stock images")
                                 }
 
                                 // Image Playground
                                 Button(action: {
                                     isPresented = true
-                                    }) {
+                                }) {
+                                    Image(systemName: "apple.intelligence")
                                     Text("Generate with AI")
-                               }
+                                }
                             }
                             .buttonStyle(.bordered)
                         }
