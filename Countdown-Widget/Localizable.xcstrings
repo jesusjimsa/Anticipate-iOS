@@ -71,6 +71,16 @@
         }
       }
     },
+    "📄 Terms of Use" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📄 Términos de Uso"
+          }
+        }
+      }
+    },
     "📱 App icon" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -78,6 +88,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "📱 Icono de la applicación"
+          }
+        }
+      }
+    },
+    "🔒 Privacy" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔒 Privacidad"
           }
         }
       }

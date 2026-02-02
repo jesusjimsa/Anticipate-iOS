@@ -64,6 +64,16 @@ struct SettingsView: View {
                     Link(destination: URL(string: "https://github.com/jesusjimsa/Countdown-Widget-iOS")!, label: {
                         Text("🤓 Source code for this app")
                     })
+                    
+                    Link(destination: URL(string: "https://github.com/jesusjimsa/Anticipate-iOS/blob/master/Terms.md")!,
+                         label: {
+                        Text("📄 Terms of Use")
+                    })
+
+                    Link(destination: URL(string: "https://github.com/jesusjimsa/Anticipate-iOS/blob/master/PRIVACY.md")!,
+                         label: {
+                        Text("🔒 Privacy")
+                    })
                 }
 
                 Section(header: Text("💰 Tip Jar")) {
