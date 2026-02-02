@@ -271,8 +271,8 @@ struct AddItemView: View {
                 // Normalize orientation BEFORE resizing
                 let normalizedImage = uiImage.fixedOrientation()
                 
-                // Resize image for widget use (max 400px width/height)
-                let resizedImage = normalizedImage.resizedForWidget(maxWidth: 400)
+                // Resize image for widget use
+                let resizedImage = normalizedImage.optimizedForWidget()
 
                 // Compress to JPEG with 0.7 quality
                 if let compressedData = resizedImage.jpegData(compressionQuality: 0.7) {
