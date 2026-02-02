@@ -102,9 +102,9 @@ struct CountdownsEntryView : View {
                 Text("Long press and edit the widget to select countdown")
                     .foregroundStyle(.white)
                     .font(.title2)
-                    .multilineTextAlignment(.center)
                     .minimumScaleFactor(0.01)
                     .lineLimit(3)
+                    .multilineTextAlignment(.center)
                     .shadow(
                             color: Color.primary.opacity(0.5), /// shadow color
                             radius: 3, /// shadow radius
@@ -118,9 +118,9 @@ struct CountdownsEntryView : View {
                         Text(entry.configuration.countdown?.title ?? "Example")
                             .foregroundStyle(.white)
                             .font(.largeTitle)
-                            .frame(maxWidth: geometry.size.width * 0.8)
                             .minimumScaleFactor(0.01)
                             .lineLimit(1)
+                            .frame(maxWidth: geometry.size.width * 0.75)
                             .shadow(
                                 color: Color.primary.opacity(0.5), /// shadow color
                                 radius: 3, /// shadow radius
