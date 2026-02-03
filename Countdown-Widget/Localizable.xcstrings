@@ -31,6 +31,16 @@
         }
       }
     },
+    "✨ Enable AI image generation" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "✨ Activar generación de imágenes con IA"
+          }
+        }
+      }
+    },
     "🌓 Theme" : {
       "localizations" : {
         "es" : {
@@ -272,6 +282,17 @@
         }
       }
     },
+    "Enabling this setting adds an option to use Image Playground to generate an image for the countdown.\nIt uses Apple Intelligence, so everything is processed on your device, unless you choose the ChatGPT option." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar este ajuste añade una opción para usar Image Playground para generar una imagen para la cuenta atrás.\nUtiliza Apple Intelligence, así que todo es procesado en su dispositivo, salvo cuando se elige la opción de ChatGPT."
+          }
+        }
+      }
+    },
     "Events" : {
       "localizations" : {
         "es" : {
@@ -378,6 +399,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Encendido"
+          }
+        }
+      }
+    },
+    "Opening Image Playground" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abriendo Image Playground"
           }
         }
       }

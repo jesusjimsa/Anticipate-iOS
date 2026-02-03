@@ -14,6 +14,10 @@ struct SettingsView: View {
     @State private var products: [Product] = []
     @State private var errorMessage: String?
     @State private var isLoading = false
+    
+    @AppStorage("aiEnabled") var aiEnabled: Bool = false
+    
+    @Environment(\.supportsImagePlayground) private var supportsImagePlayground
 
     var body: some View {
         NavigationStack {
@@ -29,14 +33,28 @@ struct SettingsView: View {
 //                        }
 //                    }
 
-                Section(header: Text("General")) {
+                let aiTextExplanation = supportsImagePlayground ?
+                    "Enabling this setting adds an option to use Image Playground to generate an image for the countdown.\nIt uses Apple Intelligence, so everything is processed on your device, unless you choose the ChatGPT option." : ""
+                Section(
+                    header: Text("General"),
+                    footer: Text(aiTextExplanation)
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                ) {
                     Picker("🌓 Theme", selection: $themeManager.appTheme) {
                         ForEach(AppTheme.allCases, id: \.self) { theme in
                             Text(theme.rawValue).tag(theme)
                         }
                     }
+                    
+                    if supportsImagePlayground {
+                        Toggle(isOn: $aiEnabled) {
+                            Text("✨ Enable AI image generation")
+                        }
+                    }
 //                    Text("📱 App icon")
                 }
+
                 Section(header: Text("About")) {
                     Link(destination: URL(string: "mailto:\(email)")!, label: {
                         Text("✉️ Email the developer")

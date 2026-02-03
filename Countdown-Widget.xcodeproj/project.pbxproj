@@ -11,6 +11,7 @@
 		8884E28F2EAC019F00B77D87 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */; };
 		8884E2902EAC019F00B77D87 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */; };
 		888D43B62EE8BD9200BBFF4C /* Anticipate Tips.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 888D43B52EE8BD9200BBFF4C /* Anticipate Tips.storekit */; };
+		889EE91C2F327B6D0037F3D8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889EE91B2F327B6D0037F3D8 /* StoreKit.framework */; };
 		88AB9BC72DA5AF6200AB9A11 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AB9BC62DA5AF6200AB9A11 /* WidgetKit.framework */; };
 		88AB9BC92DA5AF6200AB9A11 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AB9BC82DA5AF6200AB9A11 /* SwiftUI.framework */; };
 		88AB9BD82DA5AF6400AB9A11 /* CountdownsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 88AB9BC42DA5AF6200AB9A11 /* CountdownsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -56,6 +57,8 @@
 		884B19B52CD5632700E411B8 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		8884E28E2EAC019F00B77D87 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		888D43B52EE8BD9200BBFF4C /* Anticipate Tips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Anticipate Tips.storekit"; sourceTree = "<group>"; };
+		889EE8BD2F311B7D0037F3D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		889EE91B2F327B6D0037F3D8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88AB9BC42DA5AF6200AB9A11 /* CountdownsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CountdownsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		88AB9BC62DA5AF6200AB9A11 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		88AB9BC82DA5AF6200AB9A11 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -110,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889EE91C2F327B6D0037F3D8 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +123,7 @@
 		88AB9BC52DA5AF6200AB9A11 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				889EE91B2F327B6D0037F3D8 /* StoreKit.framework */,
 				88AB9BC62DA5AF6200AB9A11 /* WidgetKit.framework */,
 				88AB9BC82DA5AF6200AB9A11 /* SwiftUI.framework */,
 			);
@@ -150,6 +155,7 @@
 		88E420262BEAAA060064B747 /* Countdown-Widget */ = {
 			isa = PBXGroup;
 			children = (
+				889EE8BD2F311B7D0037F3D8 /* Info.plist */,
 				889EE6BF2F2954E60037F3D8 /* Gallery-Photos */,
 				88AB9BF52DA967B700AB9A11 /* Countdown-Widget.entitlements */,
 				88C983242D5B794100A4F23B /* Launch_Screen.storyboard */,
@@ -530,6 +536,7 @@
 				DEVELOPMENT_TEAM = 63Y3LNTUVD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Countdown-Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Anticipate;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -570,6 +577,7 @@
 				DEVELOPMENT_TEAM = 63Y3LNTUVD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Countdown-Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Anticipate;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

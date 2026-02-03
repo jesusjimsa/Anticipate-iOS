@@ -23,6 +23,7 @@ struct TitleAlertDetails {
 
 struct AddItemView: View {
     let countdown: CountdownEvent?
+    let defaults = UserDefaults()
 
     @State private var event_name: String = ""
     @State private var date = Date()
@@ -40,6 +41,7 @@ struct AddItemView: View {
     @State private var showGallery = false
     
     @State private var isPresented: Bool = false
+    @State private var isLoadingAI: Bool = false
     @State private var AIimageURL: URL?
 
     @Environment(\.dismiss) private var dismiss
@@ -154,8 +156,10 @@ struct AddItemView: View {
                         PhotosPicker("Select an image", selection: $eventPPicker, matching: .images)
                             .buttonStyle(.bordered)
 
-                        if supportsImagePlayground {
-                            Menu("Other options") {
+                        let isAIEnabled = defaults.bool(forKey: "aiEnabled")
+
+                        if supportsImagePlayground && isAIEnabled {
+                            Menu {
                                 // Gallery Button
                                 Button(action: {
                                     showGallery = true
@@ -166,13 +170,24 @@ struct AddItemView: View {
 
                                 // Image Playground
                                 Button(action: {
+                                    isLoadingAI = true
                                     isPresented = true
                                 }) {
                                     Image(systemName: "apple.intelligence")
                                     Text("Generate with AI")
                                 }
+                            } label: {
+                                if isLoadingAI {
+                                    ProgressView()
+                                        .scaleEffect(0.8)
+                                    Text("Opening Image Playground")
+                                }
+                                else {
+                                    Text("Other options")
+                                }
                             }
                             .buttonStyle(.bordered)
+                            .disabled(isLoadingAI)
                         }
                         else {
                             // Gallery Button
@@ -214,6 +229,14 @@ struct AddItemView: View {
                         if let compressedData = resizedImage.jpegData(compressionQuality: 0.7) {
                             eventImageData = compressedData
                         }
+                    }
+                    
+                    isLoadingAI = false
+                }
+                .onChange(of: isPresented) { oldValue, newValue in
+                    // Also reset loading if user dismisses without selecting
+                    if !newValue {
+                        isLoadingAI = false
                     }
                 }
                 .sheet(isPresented: $showGallery) {
