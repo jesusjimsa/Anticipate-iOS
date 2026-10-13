@@ -15,11 +15,13 @@ class CountdownEvent {
     var title: String
     var date: Date
     @Attribute(.externalStorage) var image: Data
+    var notes: String = ""
 
-    init(id: UUID, title: String, date: Date, image: Data) {
+    init(id: UUID, title: String, date: Date, image: Data, notes: String = "") {
         self.id = id
         self.title = title
         self.date = date
         self.image = image
+        self.notes = notes
     }
 }
