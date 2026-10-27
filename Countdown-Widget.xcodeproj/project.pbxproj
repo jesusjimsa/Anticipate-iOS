@@ -263,6 +263,17 @@
 				en,
 				Base,
 				es,
+				fr,
+				pl,
+				ja,
+				de,
+				sv,
+				nb,
+				"pt-PT",
+				it,
+				da,
+				ro,
+				"zh-Hans",
 			);
 			mainGroup = 88E4201B2BEAAA060064B747;
 			productRefGroup = 88E420252BEAAA060064B747 /* Products */;
@@ -371,7 +382,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = CountdownsExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 63Y3LNTUVD;
@@ -570,7 +580,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Countdown-Widget/Countdown-Widget.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Countdown-Widget/Preview Content\"";
