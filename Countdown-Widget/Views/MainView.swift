@@ -31,6 +31,7 @@ struct MainView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \CountdownEvent.date) private var countdowns: [CountdownEvent]
+    @State private var selectedCountdownID: UUID?
 
     var body: some View {
         NavigationStack {
@@ -86,7 +87,24 @@ struct MainView: View {
                 trailing: NavigationLink(destination: AddItemView(countdown: nil)) {
                     Text("Add")
                 })
+            .navigationDestination(item: $selectedCountdownID) { countdownID in
+                if let countdown = countdowns.first(where: { $0.id == countdownID }) {
+                    DetailedView(countdown: countdown)
+                }
+            }
         }
+        .onOpenURL(perform: openCountdownURL)
+    }
+
+    private func openCountdownURL(_ url: URL) {
+        guard url.scheme == "anticipate",
+              url.host == "countdown",
+              let countdownID = UUID(uuidString: url.pathComponents.dropFirst().first ?? ""),
+              countdowns.contains(where: { $0.id == countdownID }) else {
+            return
+        }
+
+        selectedCountdownID = countdownID
     }
 
     private func removeEvent(at indexSet: IndexSet) {

@@ -24,18 +24,18 @@ struct DetailedView: View {
     @FocusState private var isEditorFocused: Bool
 
     var body: some View {
-        NavigationStack {
+        if let countdown {
             ScrollView {
                 VStack {
                     Spacer(minLength: 30)
-                    createImage(countdown!.image)
+                    createImage(countdown.image)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
                         .clipped()
                     
                     VStack {
-                        let daysLeft: Int = daysLeft(date: countdown!.date)
+                        let daysLeft: Int = daysLeft(date: countdown.date)
                         
                         Text("\(daysLeft < 0 ? 0 : daysLeft)")
                             .font(.system(size: 100))
@@ -51,7 +51,7 @@ struct DetailedView: View {
                                 .padding(.bottom)
                         }
                         
-                        Text(countdown!.date, style: .date)
+                        Text(countdown.date, style: .date)
                             .padding(.top)
                             .padding(.bottom)
                     }
@@ -76,20 +76,18 @@ struct DetailedView: View {
                     .offset(y: -30)
                     
                     // Notes
-                    if let countdown {
-                        NotesEditor(countdown: countdown, isEditorFocused: $isEditorFocused)
-                            .padding(.bottom)
-                            .padding(.bottom)
-                    }
+                    NotesEditor(countdown: countdown, isEditorFocused: $isEditorFocused)
+                        .padding(.bottom)
+                        .padding(.bottom)
                 }
-                .navigationTitle("\(countdown!.title)")
+                .navigationTitle(countdown.title)
                 .alert(
                     deleteItemAlertDetails.title,
                     isPresented: $isDeleting,
                     presenting: deleteItemAlertDetails
                 ) { titleAlertDetails in
                     Button("Yes", role: .destructive) {
-                        delete(countdown!)
+                        delete(countdown)
                     }
                     Button("Cancel", role: .cancel) {
                         isDeleting = false

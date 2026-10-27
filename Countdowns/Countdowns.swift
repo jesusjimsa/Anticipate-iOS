@@ -155,6 +155,9 @@ struct Countdowns: Widget {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             CountdownsEntryView(entry: entry)
                 .containerBackground(.fill, for: .widget)
+                .widgetURL(entry.configuration.countdown.flatMap { countdown in
+                    URL(string: "anticipate://countdown/\(countdown.id.uuidString)")
+                })
         }
         .contentMarginsDisabled()
     }
