@@ -60,17 +60,6 @@ struct SettingsView: View {
                         Text("✉️ Email the developer")
                     })
 
-                    Link(destination: URL(string: "twitter://user?screen_name=jesusjimsa")!, label: {
-                        Text("🐣 Send me a tweet")
-                    })
-                    .onOpenURL(perform: { url in
-                      // If Twitter app can't handle the URL, open in Safari
-                      if UIApplication.shared.canOpenURL(url) {
-                        return
-                      }
-                      UIApplication.shared.open(URL(string: "https://twitter.com/jesusjimsa")!)
-                    })
-
                     Link(destination: URL(string: "https://mastodon.world/@jesusjimsa")!, label: {
                         Text("🐘 Mastodon")
                     })
